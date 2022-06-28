@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes} from 'react-router-dom';
 
-import Header from './components/input/header/Header';
+import Header from './components/header/Header';
 import Landing from './containers/Landing';
 import Home from './containers/Home';
 import Filters from './containers/Filters';

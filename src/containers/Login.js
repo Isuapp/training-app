@@ -35,7 +35,7 @@ const Login = ()=>{
                     'content-type':'application/json',
                 },
                 body: JSON.stringify({
-                    email, 
+                    email,
                     password,
                 }),
             });
@@ -62,8 +62,8 @@ const Login = ()=>{
     }
 
     // Redireccionamos a la pagina principal, si hay token.
-    if(token) return <Navigate to='/' />
- 
+    if(token) return <Navigate to='/home' />
+
     return(
         <main>
             <h2>Login</h2>
@@ -85,7 +85,7 @@ const Login = ()=>{
                     {!loading && 'login'}
                     {loading && 'cargando..'}
                 </button>
-            </form> 
+            </form>
             {/* Dependiendo de su error o message son verdadero falsos, lanzaremos un mensaje que viene desde el backend */}
             {error && <p className="error">{error}</p>}
             {message && <p className="success">{message}</p>}

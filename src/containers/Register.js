@@ -26,28 +26,29 @@ const Register = ()=>{
         e.preventDefault();
         // Actualizamos loading a true para deshabilitar el botón.
         setLoading(true)
-        
+
         try {
+            const formData = new FormData();
+            formData.append('name',name)
+            formData.append('email',email)
+            formData.append('password', password)
+            formData.append('role', role)
 
             const res = await fetch('http://localhost:4000/register',{
                 method:'POST',
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password,
-                    role,
-                }),
+                body: formData,
+
             })
 
             const body = await res.json();
-        
+
             if(body.status==='error'){
                  // Recogemos del body el error y lo actualuzamos en la variable error para enseñarla como mensaje
                 setError(body.message);
             }else{
                 // Mandamos mensaje de que todo ha ido bien
                 setMessage(body.message)
-            } 
+            }
 
         } catch (error) {
             console.error(error);

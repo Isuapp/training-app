@@ -4,3 +4,16 @@
   box-sizing: border-box;
   font-size: 16px;
 }
+:root{
+  --sucess:green;
+  --error:red;
+}
+.success{
+  font-weight: bold;
+  color: var(--sucess);
+
+}
+.error{
+  font-weight: bold;
+  color: var(--error);
+}

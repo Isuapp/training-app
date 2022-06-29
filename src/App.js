@@ -7,15 +7,17 @@ import Home from './containers/Home';
 import Filters from './containers/Filters';
 import EditTraining from './containers/EditTraining';
 import AddTraining from './containers/AddTraining';
-import Login from './containers/Login';
-import Register from './containers/Register';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
 import TrainingDetails from './containers/TrainingDetails';
+import { useToken } from './context/TokenContext';
 
 function App() {
+
+  const [token]=useToken();
   return (
     <div className="app">
-      <Header/>
-      <h1>Trainig app</h1>
+     {token && <Header/>}
       <Routes>
         <Route path='/' element={<Landing />}/>
         <Route path='/home' element={<Home />}/>

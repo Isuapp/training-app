@@ -1,5 +1,13 @@
+import './listTrainings.css';
+
 import { useEffect, useState } from "react";
 import {  useToken } from "../../context/TokenContext";
+import IconButton from '../iconButton/IconButton';
+
+import trash from '../../assets/brand/icons/trash.svg';
+import edit from '../../assets/brand/icons/pencil.svg';
+import image from '../../assets/brand/icons/trash.svg'
+
 
 const ListTrainigs = ( ) => {
 
@@ -28,7 +36,6 @@ const ListTrainigs = ( ) => {
         setTrainings(body.data.trainings)
       }
 
-
     } catch (error) {
       console.error(error)
       setError(error.message)
@@ -40,21 +47,30 @@ const ListTrainigs = ( ) => {
 
   useEffect(()=>{getTrainings()},[])
 
-
+  const showTrainings =   trainings.map(training=>(
+      <li key={training.id} className='training'>
+        <div>  
+          <figure> 
+            <img src={`http://localhost:4000/${training.image}`}/*  alt={`image of training ${training.name}`} */ />
+          </figure>
+        <h4>{training.name}</h4></div>
+        <div>
+          <IconButton icon={trash}/>
+          <IconButton icon={edit}/>
+        </div>
+      </li>
+  ))
+  
+  
 
   return (
       <>
         {loading? 
           <p>Cargando entrenamientos</p>
           : 
-          trainings.map(training=>(
-            <li key={training.id}>
-              <figure>
-                <img src={`http://localhost:4000/${training.image}`} /* alt={`image of training ${training.name}`} *//>
-              </figure>
-              <h4>{training.name}</h4>
-            </li>
-          ))
+          <ul>
+            {showTrainings}
+          </ul>
         }
         {error && <p className='error'>{error}</p>}
         {success && <p className='success'>{success}</p>}

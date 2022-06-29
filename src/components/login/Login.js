@@ -1,14 +1,16 @@
+import './login.css'
+
 // IMportamos los manejadores que usaremos.
 import { useState } from "react";
-import { useToken } from "../context/TokenContext";
+import { useToken } from "../../context/TokenContext";
 
 // Importamos el componente personalizado que hemos creado.
-import Input from "../components/input/Input";
+import Input from "../input/Input";
 
 // Importamos el componente Navigate que nos redireccionará dónde le indiquemos
 import { Navigate } from "react-router-dom";
 
-const Login = ()=>{
+const Login = ({move})=>{
     // LLamamos a la variable  token para manejarla
     const [token,setTokenInLocalStorage] = useToken();
 
@@ -20,7 +22,6 @@ const Login = ()=>{
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
-
 
     const handleLogin = async (e)=>{
         e.preventDefault();
@@ -65,8 +66,8 @@ const Login = ()=>{
     if(token) return <Navigate to='/home' />
 
     return(
-        <main>
-            <h2>Login</h2>
+        <article className='login-wraper'>
+            <h2>LOGIN</h2>
             <form onSubmit={handleLogin} >
                 <Input
                     label='email'
@@ -81,15 +82,19 @@ const Login = ()=>{
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)}
                 />
-                <button disabled={loading} >
-                    {!loading && 'login'}
-                    {loading && 'cargando..'}
-                </button>
+                <div>
+                    <span className='text-link' onClick={move}>not registered? Register!</span>
+                    <button disabled={loading} >
+                        {!loading && 'login'}
+                        {loading && 'cargando..'}
+                    </button>
+
+                </div>
             </form>
             {/* Dependiendo de su error o message son verdadero falsos, lanzaremos un mensaje que viene desde el backend */}
             {error && <p className="error">{error}</p>}
             {message && <p className="success">{message}</p>}
-        </main>
+        </article>
     )
 }
 

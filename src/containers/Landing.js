@@ -1,9 +1,18 @@
+
+
+import Login from "../components/login/Login";
+import { useState } from "react";
+import Register from "../components/register/Register";
+
 const Landing = ()=>{
 
+    const [registered, setRegistered] = useState(true);
+
     return(
-        <main>
-            <h2>LANDING</h2>
-        </main>
+        <>
+            {registered &&  <Login move={()=>{setRegistered(false)}}/>}
+            {!registered && <Register move={()=>{setRegistered(true)}}/>}
+        </>
     )
 }
 

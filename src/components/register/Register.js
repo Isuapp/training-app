@@ -1,15 +1,17 @@
+import './register.css';
+
 // IMportamos los manejadores que vamos a usar
 import { useState } from "react";
-import { useToken } from "../context/TokenContext";
+import { useToken } from "../../context/TokenContext";
 
 // Importamos el componente Navigate para redireccionarnos dónde queramos
 import { Navigate } from "react-router-dom";
 
 // Importamos el componente personalizado que hemos creado.
-import Input from "../components/input/Input";
+import Input from "../../components/input/Input";
 
 
-const Register = ()=>{
+const Register = ({move})=>{
     // LLamamos a la variable  token para manejarla
     const [ token] = useToken();
     // LLamamos a las variables que usaremoms para actualizar los datos
@@ -62,7 +64,7 @@ const Register = ()=>{
     if (token) return <Navigate to='/login' />;
 
     return(
-        <main>
+        <article className='register-wraper'>
             <h2>Register</h2>
             <form onSubmit={handleSubmit} >
                 <Input
@@ -95,12 +97,16 @@ const Register = ()=>{
                     onChange={(e)=> setRole(e.target.value)}
                     label='role'
                 />
-                <button disabled={loading}>registrarme </button>
+                <div>
+                    <span className='text-link' onClick={move}>Already registered? Login!</span>
+                    <button disabled={loading}>registrarme </button>
+                </div>
+               
             </form>
             {/* Dependiendo de su error o message son verdadero falsos, lanzaremos un mensaje que viene desde el backend */}
             {error && <p className="error">{error}</p>}
             {message && <p className="success">{message}</p>}
-        </main>
+        </article>
     )
 }
 

@@ -1,0 +1,17 @@
+article.login-wraper{
+    background-color: var(--mainColor);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+article.login-wraper> h2{
+    transform: translateY(1.5rem);
+}
+article.login-wraper> form{
+    background-color: var(--white);
+    width: 20rem;
+    border-radius: 2px;
+    padding:3rem;
+}

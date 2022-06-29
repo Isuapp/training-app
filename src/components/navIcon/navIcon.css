@@ -1,0 +1,16 @@
+.navLink,
+.navLink> figure
+{
+    cursor: pointer;
+    width:3.2rem;
+    height:3.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--darkColor);
+}
+.navLink> figure> img{
+    width: 1.8rem;
+    height: 1.8rem;
+}

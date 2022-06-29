@@ -1,0 +1,13 @@
+header{
+    background-color: var(--white);
+    width: 100%;
+    padding:1rem 1.5rem;
+    position: fixed;
+    bottom: 0;
+}
+
+header> nav{
+    display: flex;
+    justify-content: space-between;
+    gap:2rem;
+}

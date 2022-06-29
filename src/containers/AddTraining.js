@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useToken } from "../context/TokenContext";
 
 import Input from "../components/input/Input";
-import Select from "../components/select/select";
 import FileInput from "../components/FIleInput/FIleInput";
 
 const AddTrainig = ()=>{

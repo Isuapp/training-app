@@ -1,6 +1,6 @@
 const TrainingDetails = ()=>{
 
-    const getTraining = async ()=>{
+/*     const getTraining = async ()=>{
 
         try {
             
@@ -8,7 +8,7 @@ const TrainingDetails = ()=>{
         } catch (error) {
             
         }
-    }
+    } */
     return(
         <main>
             <h2>TrainingDetails</h2>

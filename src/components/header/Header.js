@@ -1,18 +1,23 @@
 import './header.css';
 
 import { useToken} from "../../context/TokenContext"
+import { useHandler } from '../../context/HandlerContext';
 
 
 import NavIcon from '../navIcon/NavIcon';
+import {useNavigate } from 'react-router-dom';
 
 import add from '../../assets/brand/icons/gym.svg'
 import IconButton from '../iconButton/IconButton';
 import signout from '../../assets/brand/icons/sign-out-alt.svg';
 import search from '../../assets/brand/icons/search.svg'
-import {useNavigate } from 'react-router-dom';
+import arrow from '../../assets/brand/icons/angle-left.svg'
+import edit from '../../assets/brand/icons/pencil.svg'
+import trash from '../../assets/brand/icons/trash.svg'
 
 const Header = () => {
   const [token,setTokenInLocalStorage] = useToken();
+  const [handler, setHandler] = useHandler();
 
   const navigate = useNavigate();
 
@@ -21,13 +26,21 @@ const Header = () => {
     localStorage.removeItem('token');
     navigate('/')
   }
+  
+  const back =()=>{
+    navigate('/');
+    setHandler(false)
+  }
 
   return(
     <header>
       <nav>
-        {token && <IconButton onClick={logout} icon={signout}/> }
-        {token && <IconButton onClick='#' icon={search}/> }
-        {token && <NavIcon to='/add-training' icon={add} />}
+        {handler && <IconButton  onClick={back} icon={arrow}/>}
+        {handler && <IconButton  onClick={back} icon={trash}/>}
+        {handler && <IconButton  onClick={back} icon={edit}/>}
+        {token&&!handler && <IconButton onClick={logout} icon={signout}/> }
+        {token&&!handler && <IconButton onClick='#' icon={search}/> }
+        {token&&!handler && <NavIcon to='/add-training' icon={add} />}
       </nav>
     </header>
   )

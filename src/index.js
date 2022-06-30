@@ -6,17 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { TokenProvider } from './context/TokenContext';
 import { HandlerProvider } from './context/HandlerContext';
+import { AdminProvider } from './context/adminContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HandlerProvider>
-      <TokenProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </TokenProvider>
-    </HandlerProvider>
+    <AdminProvider>
+      <HandlerProvider>
+        <TokenProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </TokenProvider>
+      </HandlerProvider>
+    </AdminProvider>
   </React.StrictMode>
 );
 

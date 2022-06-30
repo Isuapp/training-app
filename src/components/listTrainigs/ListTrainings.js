@@ -7,11 +7,14 @@ import IconButton from '../iconButton/IconButton';
 import trash from '../../assets/brand/icons/trash.svg';
 import edit from '../../assets/brand/icons/pencil.svg';
 import heart from '../../assets/brand/icons/heart.svg';
+import { useHandler } from '../../context/HandlerContext';
 
 
 const ListTrainigs = ( ) => {
 
   const [token] = useToken();
+  const [handler, setHandler] = useHandler();
+
   const [ trainings, setTrainings] = useState([]);
   const [ training, setTraining] = useState([]);
 
@@ -63,6 +66,7 @@ const ListTrainigs = ( ) => {
       console.log(body.data);
       if(res==='error') setError(body.message)
       else {
+        setHandler(true)
         setShowTraining(true);
         setTraining(body.data)
         console.log('training',training);
@@ -71,6 +75,7 @@ const ListTrainigs = ( ) => {
     }
   }
   useEffect(()=>{getTrainings()},[])
+
 
   const showTrainings =   trainings.map(training=>(
       <li key={training.id} className='training' onClick={()=>showDetailTraining(training.id)}>

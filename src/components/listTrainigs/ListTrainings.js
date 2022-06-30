@@ -82,6 +82,7 @@ const ListTrainigs = ( ) => {
 
   const handleEditTraining = (idTraining)=>{
     navigate('/edit-training')
+    console.log(idTraining);
     return idTraining
   }
   useEffect(()=>{getTrainings()},[])

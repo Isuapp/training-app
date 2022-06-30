@@ -87,7 +87,6 @@ const AddTrainig = ()=>{
         try {
 
             const formData = new FormData();
-            console.log(`NAME:${name}, description:${description}, typology:${typology}, muscleGroup:${muscleGroup}, image:${image}, `);
 
             formData.append('name', name);
             formData.append('description', description);

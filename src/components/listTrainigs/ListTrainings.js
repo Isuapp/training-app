@@ -8,12 +8,14 @@ import trash from '../../assets/brand/icons/trash.svg';
 import edit from '../../assets/brand/icons/pencil.svg';
 import heart from '../../assets/brand/icons/heart.svg';
 import { useHandler } from '../../context/HandlerContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const ListTrainigs = ( ) => {
 
   const [token] = useToken();
   const [handler, setHandler] = useHandler();
+  const navigate = useNavigate()
 
   const [ trainings, setTrainings] = useState([]);
   const [ training, setTraining] = useState([]);
@@ -85,8 +87,8 @@ const ListTrainigs = ( ) => {
           </figure>
         <h4>{training.name}</h4></div>
         <div>
-          <IconButton icon={trash}/>
-          <IconButton icon={edit}/>
+          <IconButton icon={trash} onClick={()=>{console.log('vavava')}}/>
+          <IconButton icon={edit} onClick={()=>navigate('/edit-training ')}/>
         </div>
       </li>
   ))

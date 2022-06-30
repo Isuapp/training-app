@@ -20,7 +20,7 @@ const Header = () => {
   const [token,setTokenInLocalStorage] = useToken();
   const [handler, setHandler] = useHandler();
   const [admin] = useAdmin();
-
+  console.log(`Admin:${admin}  --- Handler:${handler}  --- Token:${token}`);
   const navigate = useNavigate();
 
   const logout = () => {

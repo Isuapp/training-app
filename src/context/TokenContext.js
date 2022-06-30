@@ -17,7 +17,7 @@ export const TokenProvider = ({children})=>{
         setToken(tokenValue)
     }
 
-    // Retornamos el cONTEXTO
+    // Retornamos el contexto
     return(
         <TokenContext.Provider value={[token, setTokenInLocalStorage]}>
             {children}

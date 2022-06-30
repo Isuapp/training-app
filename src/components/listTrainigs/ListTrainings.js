@@ -8,12 +8,14 @@ import trash from '../../assets/brand/icons/trash.svg';
 import edit from '../../assets/brand/icons/pencil.svg';
 import heart from '../../assets/brand/icons/heart.svg';
 import { useHandler } from '../../context/HandlerContext';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useAdmin } from '../../context/adminContext';
 
 
 const ListTrainigs = ( ) => {
 
   const [token] = useToken();
+  const [admin, setAdminInLocalStorage] = useAdmin();
   const [handler, setHandler] = useHandler();
   const navigate = useNavigate()
 
@@ -27,11 +29,12 @@ const ListTrainigs = ( ) => {
   
   const getTrainings = async () =>{
 
+    const authorization = token ? token : admin
     try {
       
       const res = await fetch('http://localhost:4000/trainings',{
         headers:{
-          Authorization: token,
+          Authorization: authorization,
         }
       });
       
@@ -76,6 +79,11 @@ const ListTrainigs = ( ) => {
     } catch (error) {
     }
   }
+
+  const handleEditTraining = (idTraining)=>{
+    navigate('/edit-training')
+    return idTraining
+  }
   useEffect(()=>{getTrainings()},[])
 
 
@@ -88,7 +96,7 @@ const ListTrainigs = ( ) => {
         <h4>{training.name}</h4></div>
         <div>
           <IconButton icon={trash} onClick={()=>{console.log('vavava')}}/>
-          <IconButton icon={edit} onClick={()=>navigate('/edit-training ')}/>
+          <IconButton icon={edit} onClick={()=>{handleEditTraining(training.id)}}/>
         </div>
       </li>
   ))

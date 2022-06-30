@@ -2,6 +2,7 @@ import './listTrainings.css';
 
 import { useEffect, useState } from "react";
 import {  useToken } from "../../context/TokenContext";
+import { useAdmin } from '../../context/adminContext';
 import IconButton from '../iconButton/IconButton';
 
 import trash from '../../assets/brand/icons/trash.svg';
@@ -9,7 +10,7 @@ import edit from '../../assets/brand/icons/pencil.svg';
 import heart from '../../assets/brand/icons/heart.svg';
 import { useHandler } from '../../context/HandlerContext';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useAdmin } from '../../context/adminContext';
+
 
 
 const ListTrainigs = ( ) => {
@@ -26,26 +27,26 @@ const ListTrainigs = ( ) => {
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showTraining, setShowTraining] = useState(false);
-  
-  const getTrainings = async () =>{
 
+  const getTrainings = async () =>{
+console.log(admin);
     const authorization = token ? token : admin
     try {
-      
+
       const res = await fetch('http://localhost:4000/trainings',{
         headers:{
           Authorization: authorization,
         }
       });
-      
+
       const body = await res.json();
-      console.log(body.data.trainings);
+
       if(body.status==='error') setError(body.message);
       else {
         setLoading(false);
         setTrainings(body.data.trainings)
       }
-
+      console.log(trainings)
     } catch (error) {
       console.error(error)
       setError(error.message)
@@ -58,12 +59,12 @@ const ListTrainigs = ( ) => {
   const showDetailTraining = async (idTraining)=>{
 
     try {
-      
+
       const res = await fetch(`http://localhost:4000/trainings/${idTraining}`,{
         method:'GET',
         headers:{
           'content-type':'application/json',
-          Authorization: token,
+          Authorization: admin,
         }
       });
 
@@ -90,9 +91,9 @@ const ListTrainigs = ( ) => {
 
   const showTrainings =   trainings.map(training=>(
       <li key={training.id} className='training' onClick={()=>showDetailTraining(training.id)}>
-        <div>  
-          <figure> 
-            <img src={`http://localhost:4000/${training.image}`}/*  alt={`image of training ${training.name}`} */ />
+        <div>
+          <figure>
+            <img src={`http://localhost:4000/uploads/${training.image}`}/*  alt={`image of training ${training.name}`} */ />
           </figure>
         <h4>{training.name}</h4></div>
         <div>
@@ -109,8 +110,8 @@ const ListTrainigs = ( ) => {
         <button onClick={()=>{setShowTraining(false)}}>salir</button>
       </article>
   }) */
-  
-  
+
+
 
   return (
       <div className='training-wraper'>

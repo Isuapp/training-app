@@ -6,7 +6,7 @@ import IconButton from '../iconButton/IconButton';
 
 import trash from '../../assets/brand/icons/trash.svg';
 import edit from '../../assets/brand/icons/pencil.svg';
-import image from '../../assets/brand/icons/trash.svg'
+import heart from '../../assets/brand/icons/heart.svg';
 
 
 const ListTrainigs = ( ) => {
@@ -60,16 +60,14 @@ const ListTrainigs = ( ) => {
       });
 
       const body = await res.json()
-      console.log(body.data.training);
-      const tr = body.data.training
+      console.log(body.data);
       if(res==='error') setError(body.message)
       else {
         setShowTraining(true);
-        console.log(showTraining);
-        setTraining([tr])
+        setTraining(body.data)
+        console.log('training',training);
       }
     } catch (error) {
-      
     }
   }
   useEffect(()=>{getTrainings()},[])
@@ -88,10 +86,10 @@ const ListTrainigs = ( ) => {
       </li>
   ))
 
-/*   const trainingDetail = training.map(TR=>{
-      <article>
-        <p>{training.name}</p>
-        <p>{training.description}</p>
+/*   const trainingDetail = training.map((tr)=>{
+      <article key={tr.id}>
+        <p>{tr.name}</p>
+        <p>{tr.description}</p>
         <button onClick={()=>{setShowTraining(false)}}>salir</button>
       </article>
   }) */
@@ -99,7 +97,7 @@ const ListTrainigs = ( ) => {
   
 
   return (
-      <>
+      <div className='training-wraper'>
         {loading &&
           <p>Cargando entrenamientos</p>
         }
@@ -108,14 +106,36 @@ const ListTrainigs = ( ) => {
             {showTrainings}
           </ul>
         :
-         <>
-         <p>training:{training.name}</p>
-         <button onClick={()=>setShowTraining(false)} >salir</button> 
-          </>
+        /* {trainingDetail} */
+        <article className='training-detail'>
+          <div>
+            <p>Name:</p>
+            <p>{training.name}</p>
+          </div>
+          <div>
+            <p>Typology</p>
+            <p>{training.typology}</p>
+          </div>
+          <div>
+            <p>Muscle Group</p>
+            <p>{training.muscleGroup}</p>
+          </div>
+          <div>
+            <p>Description</p>
+            <p>{training.description}</p>
+          </div>
+          <IconButton
+            icon={heart}
+          />
+        </article>
+       /*  <>
+          <p>training</p>
+          <button onClick={()=>{setShowTraining(false)}}>salir</button>
+        </> */
         }
         {error && <p className='error'>{error}</p>}
         {success && <p className='success'>{success}</p>}
-        </>
+        </div>
     )
 
 }

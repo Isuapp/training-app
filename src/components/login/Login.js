@@ -3,6 +3,7 @@ import './login.css'
 // IMportamos los manejadores que usaremos.
 import { useState } from "react";
 import { useToken } from "../../context/TokenContext";
+import { useAdmin } from '../../context/adminContext';
 
 // Importamos el componente personalizado que hemos creado.
 import Input from "../input/Input";
@@ -13,6 +14,7 @@ import { Navigate } from "react-router-dom";
 const Login = ({move})=>{
     // LLamamos a la variable  token para manejarla
     const [token,setTokenInLocalStorage] = useToken();
+    const [admin, setAdmin] = useAdmin()
 
     // LLamamos a las variables que usaremoms para actualizar los datos
     const [email, setEmail] = useState('');
@@ -43,10 +45,19 @@ const Login = ({move})=>{
 
             const body = await res.json();
 
-
+            console.log(body);
             if(body.status==='error'){
                 // Recogemos del body el error y lo actualuzamos en la variable error para enseñarla como mensaje
                 setError(body.message)
+            }else if(body.status==='ok'&& body.data.payload.role==='admin'){
+                // Le damos al contextAdmin valor verdadero para usar opciones admin
+                setAdmin(true)
+                console.log('ADMIN?', admin);
+                // Actualizmos el token con nuestro useToken
+                setTokenInLocalStorage(body.data.token);
+                // Mandamos mensaje de que todo ha ido bien
+                setMessage(body.message)
+
             }else{
                 // Actualizmos el token con nuestro useToken
                 setTokenInLocalStorage(body.data.token);

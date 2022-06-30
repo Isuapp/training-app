@@ -11,13 +11,15 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import TrainingDetails from './containers/TrainingDetails';
 import { useToken } from './context/TokenContext';
+import { useAdmin } from './context/adminContext';
 
 function App() {
 
   const [token]=useToken();
+  const [admin]=useAdmin();
   return (
     <div className="app">
-     {token && <Header/>}
+     {token ||admin && <Header/>}
       <Routes>
         <Route path='/' element={<Landing />}/>
         <Route path='/home' element={<Home />}/>

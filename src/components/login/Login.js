@@ -14,7 +14,7 @@ import { Navigate } from "react-router-dom";
 const Login = ({move})=>{
     // LLamamos a la variable  token para manejarla
     const [token,setTokenInLocalStorage] = useToken();
-    const [admin, setAdmin] = useAdmin()
+    const [admin, setAdminInLocalStorage] = useAdmin()
 
     // LLamamos a las variables que usaremoms para actualizar los datos
     const [email, setEmail] = useState('');
@@ -50,11 +50,10 @@ const Login = ({move})=>{
                 // Recogemos del body el error y lo actualuzamos en la variable error para enseñarla como mensaje
                 setError(body.message)
             }else if(body.status==='ok'&& body.data.payload.role==='admin'){
-                // Le damos al contextAdmin valor verdadero para usar opciones admin
-                setAdmin(true)
+                console.log('admin');
+                // Actualizmos el token con nuestro useAdmin
+                setAdminInLocalStorage(body.data.token)
                 console.log('ADMIN?', admin);
-                // Actualizmos el token con nuestro useToken
-                setTokenInLocalStorage(body.data.token);
                 // Mandamos mensaje de que todo ha ido bien
                 setMessage(body.message)
 
@@ -72,9 +71,9 @@ const Login = ({move})=>{
             setLoading(false)
         }
     }
-
+    console.log('lcoalstorage', localStorage);
     // Redireccionamos a la pagina principal, si hay token.
-    if(token) return <Navigate to='/home' />
+    if(token || admin) return <Navigate to='/home' />
 
     return(
         <article className='login-wraper'>

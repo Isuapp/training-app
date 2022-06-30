@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { useToken } from "../context/TokenContext";
+import { useAdmin } from "../context/adminContext";
 
 const EditTrainig = ()=>{
 
     const [idTraining, setIdTraining] = useState();
-    const [token, setTokenInLocalStorage] = useToken();
+    const [admin] = useAdmin();
 
     const handleEditTraining = async(e)=>{
         
@@ -12,7 +12,7 @@ const EditTrainig = ()=>{
         const res = await fetch(`http://localhost:4000/trainings/${idTraining}`,{
             method:'PUT',
             headers:{
-                Authorization:token
+                Authorization:admin
             },
         });
         const body = await res.json();

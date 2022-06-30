@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useToken } from "../context/TokenContext";
 
 import Input from "../components/input/Input";
 import FileInput from "../components/FIleInput/FIleInput";
+import { useAdmin } from "../context/adminContext";
 
 const AddTrainig = ()=>{
 
@@ -64,13 +64,13 @@ const AddTrainig = ()=>{
             }
         ]
 
-    const [token] = useToken();
+    const [admin] = useAdmin();
 
     const [name, setName ] = useState('');
     const [typology, setTypology] = useState('');
     const [muscleGroup, setMuscleGroup] = useState('');
     const [description, setDescription] = useState('');
-    const [image, setImage] = useState(null);
+    const [images, setImage] = useState(null);
 
 
     const [error, setError] = useState(null);
@@ -78,8 +78,6 @@ const AddTrainig = ()=>{
     const [loading, setLoading] = useState(false);
 
     
-    console.log(typology);
-
     const handleAddTraining = async (e)=>{
         e.preventDefault();
         setLoading(true);
@@ -92,12 +90,12 @@ const AddTrainig = ()=>{
             formData.append('description', description);
             formData.append('typology', typology);
             formData.append('muscleGroup', muscleGroup);
-            formData.append('image', image);
+            formData.append('image', images);
             
             const res = await fetch('http://localhost:4000/trainings',{
                 method:'POST',
                 headers:{
-                    Authorization:  token,
+                    Authorization:  admin,
                 },
                 body: formData,
             });
@@ -151,10 +149,10 @@ const AddTrainig = ()=>{
                     className='fileInput-wraper'
                     onChange={(e)=>{ setImage(e.target.files[0])}}
                 >
-                    {image ? 
+                    {images ? 
                     <figure>
                         <p>Preview</p>
-                        <img src={URL.createObjectURL(image)} alt='image preview'/>
+                        <img src={URL.createObjectURL(images)} alt='image preview'/>
                     </figure>
                     : null
                     }

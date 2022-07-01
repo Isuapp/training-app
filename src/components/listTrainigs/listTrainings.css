@@ -19,7 +19,6 @@ ul> li.training{
 }
 ul> li.training> div> h4{
     text-transform: uppercase;
-
 }
 ul> li.training> div{
     display: flex;

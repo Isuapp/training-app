@@ -19,7 +19,7 @@ function App() {
   const [admin]=useAdmin();
   return (
     <div className="app">
-     {token ||admin && <Header/>}
+     {token || admin && <Header/>}
       <Routes>
         <Route path='/' element={<Landing />}/>
         <Route path='/home' element={<Home />}/>

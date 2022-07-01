@@ -11,7 +11,7 @@ import { useHandler } from '../../context/HandlerContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAdmin } from '../../context/adminContext';
 
-
+import brokenImage from '../../assets/utils/broken-image.png'
 const ListTrainigs = ( ) => {
 
   const [token] = useToken();
@@ -39,7 +39,7 @@ const ListTrainigs = ( ) => {
       });
       
       const body = await res.json();
-      console.log(body.data.trainings);
+
       if(body.status==='error') setError(body.message);
       else {
         setLoading(false);
@@ -58,49 +58,78 @@ const ListTrainigs = ( ) => {
   const showDetailTraining = async (idTraining)=>{
 
     try {
-      
+      const authorization = token? token : admin;
       const res = await fetch(`http://localhost:4000/trainings/${idTraining}`,{
         method:'GET',
         headers:{
           'content-type':'application/json',
-          Authorization: token,
+          Authorization: authorization,
         }
       });
 
       const body = await res.json()
-      console.log(body.data);
-      if(res==='error') setError(body.message)
+      
+      if(body.status==='error') setError(body.message)
       else {
         setHandler(true)
         setShowTraining(true);
         setTraining(body.data)
-        console.log('training',training);
       }
     } catch (error) {
     }
   }
 
-  const handleEditTraining = (idTraining)=>{
+  const handleEditTraining = async (idTraining)=>{
+    localStorage.setItem('idTraining',idTraining)
     navigate('/edit-training')
-    console.log(idTraining);
-    return idTraining
   }
-  useEffect(()=>{getTrainings()},[])
+
+  useEffect(()=>{getTrainings()},[success])
 
 
   const showTrainings =   trainings.map(training=>(
-      <li key={training.id} className='training' onClick={()=>showDetailTraining(training.id)}>
+      <li key={training.id} className='training' /* onClick={()=>showDetailTraining(training.id)} */>
         <div>  
           <figure> 
-            <img src={`http://localhost:4000/${training.image}`}/*  alt={`image of training ${training.name}`} */ />
+            
+          {/*   <img src={`http://localhost:4000/${training.image}`} alt={`image of training ${training.name}`} /> */}
+            
+            <img src={brokenImage}  alt='image-preview'/>
+            
           </figure>
         <h4>{training.name}</h4></div>
         <div>
-          <IconButton icon={trash} onClick={()=>{console.log('vavava')}}/>
+          <IconButton icon={trash} onClick={()=>{handleDeleteTraining(training.id)}}/>
           <IconButton icon={edit} onClick={()=>{handleEditTraining(training.id)}}/>
         </div>
       </li>
   ))
+
+  const handleDeleteTraining = async (idTraining)=>{
+
+    try {
+      console.log(admin);
+      const res = await fetch(`http://localhost:4000/trainings/${idTraining}`,{
+        method:'DELETE',
+        headers:{
+          'content-type':'application/json',
+          Authorization: admin,
+        }
+      })
+      const body = await res.json();
+      if(body.status==='error'){
+        setError(body.message);
+      }else{
+        setSuccess(body.message)
+      }
+
+
+
+
+    } catch (error) {
+      
+    }
+  }
 
 /*   const trainingDetail = training.map((tr)=>{
       <article key={tr.id}>

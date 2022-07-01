@@ -19,21 +19,26 @@ import { useAdmin } from '../../context/adminContext';
 const Header = () => {
   const [token,setTokenInLocalStorage] = useToken();
   const [handler, setHandler] = useHandler();
-  const [admin] = useAdmin();
-  console.log(`Admin:${admin}  --- Handler:${handler}  --- Token:${token}`);
+  const [admin, setAdminInLocalStorage] = useAdmin();
+  
   const navigate = useNavigate();
 
   const logout = () => {
-    setTokenInLocalStorage(null);
-    localStorage.removeItem('token');
-    navigate('/')
+    if(token){
+      setTokenInLocalStorage(null);
+      localStorage.removeItem('token');
+      navigate('/')
+    }else{
+      setAdminInLocalStorage(null);
+      localStorage.removeItem('admin');
+      navigate('/')
+    }
   }
 
   const back =()=>{
     navigate('/');
     setHandler(false)
   }
-  console.log(admin);
 
   return(
     <header>
@@ -42,7 +47,7 @@ const Header = () => {
         {handler && <IconButton  onClick={back} icon={trash}/>}
         {handler && <IconButton  onClick={back} icon={edit}/>}
         {token||admin&&!handler && <IconButton onClick={logout} icon={signout}/> }
-        {token||admin&&!handler && <IconButton onClick='#' icon={search}/> }
+        {token||admin&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
         {token||admin&&!handler && <NavIcon to='/add-training' icon={add} />}
       </nav>
     </header>

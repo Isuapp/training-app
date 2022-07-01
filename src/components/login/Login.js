@@ -56,7 +56,6 @@ const Login = ({move})=>{
                 console.log('ADMIN?', admin);
                 // Mandamos mensaje de que todo ha ido bien
                 setMessage(body.message)
-
             }else{
                 // Actualizmos el token con nuestro useToken
                 setTokenInLocalStorage(body.data.token);
@@ -71,7 +70,7 @@ const Login = ({move})=>{
             setLoading(false)
         }
     }
-    console.log('lcoalstorage', localStorage);
+    
     // Redireccionamos a la pagina principal, si hay token.
     if(token || admin) return <Navigate to='/home' />
 

@@ -19,6 +19,7 @@ const ListTrainigs = ( ) => {
   const [handler, setHandler] = useHandler();
   const navigate = useNavigate()
 
+  const authorization = token? token : admin;
   const [ trainings, setTrainings] = useState([]);
   const [ training, setTraining] = useState([]);
 
@@ -58,7 +59,6 @@ const ListTrainigs = ( ) => {
   const showDetailTraining = async (idTraining)=>{
 
     try {
-      const authorization = token? token : admin;
       const res = await fetch(`http://localhost:4000/trainings/${idTraining}`,{
         method:'GET',
         headers:{
@@ -88,7 +88,7 @@ const ListTrainigs = ( ) => {
 
 
   const showTrainings =   trainings.map(training=>(
-      <li key={training.id} className='training' /* onClick={()=>showDetailTraining(training.id)} */>
+      <li key={training.id} className='training' onClick={()=>showDetailTraining(training.id)}>
         <div>  
           <figure> 
             
@@ -139,6 +139,31 @@ const ListTrainigs = ( ) => {
       </article>
   }) */
   
+  const handleLikes =async (like)=>{
+
+    try {
+      
+      const res = await fetch(`http://localhost:4000/trainings/${like}/likes`,{
+        method:'POST',
+        headers:{
+          Authorization: authorization,
+          'content-type': 'application/json',
+        },
+      });
+
+      const body = await res.json();
+      console.log(body);
+      if(body.status==='error'){
+        setError(body.message);
+      }else if(body.status==='ok'){
+        setError(body.message);
+      }else{
+        setSuccess(body.message)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
 
   return (
@@ -171,7 +196,10 @@ const ListTrainigs = ( ) => {
           </div>
           <IconButton
             icon={heart}
+            onClick={()=>{handleLikes(training.id)}}
           />
+          {error&&<p className='error' >{error}</p>}
+          {success&&<p className='success' >{success}</p>}
         </article>
        /*  <>
           <p>training</p>

@@ -40,7 +40,7 @@ const ListTrainigs = ( ) => {
       });
 
       const body = await res.json();
-
+      console.log(body);
       if(body.status==='error') setError(body.message);
       else {
         setLoading(false);
@@ -68,7 +68,7 @@ const ListTrainigs = ( ) => {
       });
 
       const body = await res.json()
-
+      console.log('BODY',body)
       if(body.status==='error') setError(body.message)
       else {
         setHandler(true)
@@ -92,7 +92,7 @@ console.log(training);
         <div>
           <figure>
 
-          <img src={`http://localhost:4000/${training.image}`} alt={`image of training ${training.name}`} />
+            <img src={`http://localhost:4000/${training.image}`} alt={`image of training ${training.name}`} />
 
             {/* <img src={brokenImage}  alt='image-preview'/> */}
 
@@ -148,7 +148,6 @@ console.log(training);
         method:'POST',
         headers:{
           Authorization: authorization,
-          'content-type': 'application/json',
         },
       });
 
@@ -194,6 +193,7 @@ console.log(training);
           <div>
             <p>Description</p>
             <p>{training.description}</p>
+            <p className='success'>votes {training.likes}</p>
           </div>
           <IconButton
             icon={heart}

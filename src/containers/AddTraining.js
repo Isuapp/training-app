@@ -1,3 +1,4 @@
+import jwt from 'jwt-decode'
 import { useState } from "react";
 
 import Input from "../components/input/Input";
@@ -84,8 +85,13 @@ const AddTrainig = ()=>{
 
         try {
 
+            const user = jwt(admin)
+            console.log('modefokeando con el user',user);
+            const idUser = user.idUser;
+            console.log('id:',idUser);
             const formData = new FormData();
 
+            formData.append('idUser', idUser)
             formData.append('name', name);
             formData.append('description', description);
             formData.append('typology', typology);
@@ -101,6 +107,7 @@ const AddTrainig = ()=>{
             });
 
             const body = res.json();
+
 
             if(body.status='error') setError(body.message)
             else setSuccess(body.message);

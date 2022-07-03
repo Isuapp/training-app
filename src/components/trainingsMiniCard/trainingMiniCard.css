@@ -1,0 +1,38 @@
+ul > li{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    align-items: center;
+    padding:1rem 0;
+}
+ul> li>article.training{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2px;
+    background-color: var(--mainColor);
+    width:20rem;
+    padding:.8rem;
+}
+ul> article.training> .link> h4{
+    text-transform: uppercase;
+}
+ul> li>article.training> .link,
+ul> li>article.training> div
+{
+    text-decoration: none;
+    color:var(--darkestColor);
+    display: flex;
+    gap:1rem;
+}
+ul> li>article.training> .link> figure{
+    width:2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+ul>li> article.training> .link> figure> img{
+    width: 100%;
+}
+li{
+    list-style: none;
+}

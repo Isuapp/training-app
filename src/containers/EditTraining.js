@@ -42,7 +42,7 @@ const EditTrainig = ()=>{
         setHandler(true)
         try {
             const authorization = token? token : admin;
-            const res = await fetch(`http://localhost:4000/trainings/2`,{
+            const res = await fetch(`http://localhost:4000/trainings/5`,{
             method:'GET',
             headers:{
             'content-type':'application/json',
@@ -51,7 +51,7 @@ const EditTrainig = ()=>{
         });
             console.log(`RES:${res}`);
       
-            const body = await res.text();
+            const body = await res.json();
             console.log(`Body:${body}`);
             if(body.status==='error'){
                 setError(body.message)

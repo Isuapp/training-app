@@ -9,12 +9,17 @@ import { useAdmin } from '../../context/adminContext';
 import Input from "../input/Input";
 
 // Importamos el componente Navigate que nos redireccionará dónde le indiquemos
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { loginService } from '../../services';
+
+import jwt from 'jwt-decode'
 
 const Login = ({move})=>{
+    
+    const navigate = useNavigate()
     // LLamamos a la variable  token para manejarla
-    const [token,setTokenInLocalStorage] = useToken();
-    const [admin, setAdminInLocalStorage] = useAdmin()
+    const [,setTokenInLocalStorage] = useToken();
+    const [,setAdminInLocalStorage] = useAdmin()
 
     // LLamamos a las variables que usaremoms para actualizar los datos
     const [email, setEmail] = useState('');
@@ -23,48 +28,27 @@ const Login = ({move})=>{
     // Llamamos a las variables que usaremos para recibir feedback del backend.
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [message, setMessage] = useState(null);
 
     const handleLogin = async (e)=>{
         e.preventDefault();
         // Actualizamos loading a true para deshabilitar el botón.
         setLoading(true);
+        setError(null);
 
         try {
-
-            const res = await fetch('http://localhost:4000/login',{
-                method:'POST',
-                headers:{
-                    'content-type':'application/json',
-                },
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
-            });
-
-            const body = await res.json();
-
-            console.log(body);
-            if(body.status==='error'){
-                // Recogemos del body el error y lo actualuzamos en la variable error para enseñarla como mensaje
-                setError(body.message)
-            }else if(body.status==='ok'&& body.data.payload.role==='admin'){
-                console.log('admin');
-                // Actualizmos el token con nuestro useAdmin
-                setAdminInLocalStorage(body.data.token)
-                console.log('ADMIN?', admin);
-                // Mandamos mensaje de que todo ha ido bien
-                setMessage(body.message)
+            
+            const data = await loginService({email, password});
+            const user = jwt(data);
+            
+            if(user.role==='admin'){
+                setAdminInLocalStorage(data)
+                navigate('/trainings');
             }else{
-                // Actualizmos el token con nuestro useToken
-                setTokenInLocalStorage(body.data.token);
-                // Mandamos mensaje de que todo ha ido bien
-                setMessage(body.message)
+                setTokenInLocalStorage(data)
+                navigate('/trainings');
             }
 
         } catch (error) {
-            console.error(error)
             setError(error.message)
         } finally{
             setLoading(false)
@@ -72,7 +56,6 @@ const Login = ({move})=>{
     }
     
     // Redireccionamos a la pagina principal, si hay token.
-    if(token || admin) return <Navigate to='/home' />
 
     return(
         <article className='login-wraper'>
@@ -102,7 +85,6 @@ const Login = ({move})=>{
             </form>
             {/* Dependiendo de su error o message son verdadero falsos, lanzaremos un mensaje que viene desde el backend */}
             {error && <p className="error">{error}</p>}
-            {message && <p className="success">{message}</p>}
         </article>
     )
 }

@@ -12,6 +12,8 @@ import Register from './components/register/Register';
 import TrainingDetails from './containers/TrainingDetails';
 import { useToken } from './context/TokenContext';
 import { useAdmin } from './context/adminContext';
+import Trainings from './containers/Trainings';
+import NotFound from './containers/NotFound';
 
 function App() {
 
@@ -19,16 +21,19 @@ function App() {
   const [admin]=useAdmin();
   return (
     <div className="app">
-     {token || admin && <Header/>}
+     <Header/>
       <Routes>
         <Route path='/' element={<Landing />}/>
         <Route path='/home' element={<Home />}/>
+        <Route path='/trainings' element={<Trainings />}/>
+        <Route path='/trainings/:id' element={<TrainingDetails />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/training-details' element={<TrainingDetails />}/>
         <Route path='/add-training' element={<AddTraining />}/>
         <Route path='/edit-training' element={<EditTraining />}/>
         <Route path='/filters' element={<Filters />}/>
+        <Route path='*' element={<NotFound />}/>
       </Routes>
     </div>
   );

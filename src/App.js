@@ -2,18 +2,18 @@ import './App.css';
 import { Route, Routes} from 'react-router-dom';
 
 import Header from './components/header/Header';
-import Landing from './containers/Landing';
-import Home from './containers/Home';
-import Filters from './containers/Filters';
-import EditTraining from './containers/EditTraining';
-import AddTraining from './containers/AddTraining';
-import Login from './components/login/Login';
-import Register from './components/register/Register';
-import TrainingDetails from './containers/TrainingDetails';
+import LandingContainer from './containers/LandingContainer';
+import HomeContainer from './containers/HomeContainer';
+import FiltersContainer from './containers/FiltersContainer';
+import EditTrainingContainer from './containers/EditTrainingContainer';
+import AddTrainigContainer from './containers/AddTrainingContainer';
+import LoginContainer from './components/login/LoginContainer';
+import RegisterContainer from './components/register/RegisterContainer';
+import TrainingDetailsContainer from './containers/TrainingDetailsContainer';
 import { useToken } from './context/TokenContext';
 import { useAdmin } from './context/adminContext';
-import Trainings from './containers/Trainings';
-import NotFound from './containers/NotFound';
+import TrainingsContainer from './containers/TrainingsContainer';
+import NotFoundContainer from './containers/NotFoundContainer';
 
 function App() {
 
@@ -23,17 +23,17 @@ function App() {
     <div className="app">
      <Header/>
       <Routes>
-        <Route path='/' element={<Landing />}/>
-        <Route path='/home' element={<Home />}/>
-        <Route path='/trainings' element={<Trainings />}/>
-        <Route path='/trainings/:id' element={<TrainingDetails />}/>
-        <Route path='/register' element={<Register />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/training-details' element={<TrainingDetails />}/>
-        <Route path='/add-training' element={<AddTraining />}/>
-        <Route path='/edit-training' element={<EditTraining />}/>
-        <Route path='/filters' element={<Filters />}/>
-        <Route path='*' element={<NotFound />}/>
+        <Route path='/' element={<LandingContainer />}/>
+        {/* <Route path='/home' element={<Home />}/> */}
+        <Route path='/trainings' element={<TrainingsContainer />}/>
+        <Route path='/trainings/:id' element={<TrainingDetailsContainer />}/>
+        <Route path='/register' element={<RegisterContainer />}/>
+        <Route path='/login' element={<LoginContainer />}/>
+        <Route path='/training-details' element={<TrainingDetailsContainer />}/>
+        <Route path='/add-training' element={<AddTrainigContainer />}/>
+        <Route path='/edit-training' element={<EditTrainingContainer />}/>
+        <Route path='/filters' element={<FiltersContainer />}/>
+        <Route path='*' element={<NotFoundContainer />}/>
       </Routes>
     </div>
   );

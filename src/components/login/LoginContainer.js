@@ -14,12 +14,12 @@ import { loginService } from '../../services';
 
 import jwt from 'jwt-decode'
 
-const Login = ({move})=>{
+const LoginContainer = ({move})=>{
     
     const navigate = useNavigate()
     // LLamamos a la variable  token para manejarla
-    const [,setTokenInLocalStorage] = useToken();
-    const [,setAdminInLocalStorage] = useAdmin()
+    const [token,setToken] = useToken();
+    const [admin,setAdmin] = useAdmin()
 
     // LLamamos a las variables que usaremoms para actualizar los datos
     const [email, setEmail] = useState('');
@@ -41,10 +41,12 @@ const Login = ({move})=>{
             const user = jwt(data);
             
             if(user.role==='admin'){
-                setAdminInLocalStorage(data)
+                setAdmin(data)
+                console.log('token admin:', admin)
                 navigate('/trainings');
             }else{
-                setTokenInLocalStorage(data)
+                setToken(data)
+                console.log('token user:', token)
                 navigate('/trainings');
             }
 
@@ -89,4 +91,4 @@ const Login = ({move})=>{
     )
 }
 
-export default Login;
+export default LoginContainer;

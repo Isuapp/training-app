@@ -6,14 +6,14 @@ import { useToken } from "../../context/TokenContext";
 import { useAdmin } from '../../context/adminContext';
 
 // Importamos el componente Navigate para redireccionarnos dónde queramos
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Importamos el componente personalizado que hemos creado.
-import Input from "../../components/input/Input";
+import Input from "../input/Input";
 import { registerService } from '../../services';
 
 
-const Register = ({move})=>{
+const RegisterContainer = ({move})=>{
     const navigate = useNavigate()
     // LLamamos a la variable  token para manejarla
     const [ token] = useToken();
@@ -113,4 +113,4 @@ const Register = ({move})=>{
     )
 }
 
-export default Register;
+export default RegisterContainer;

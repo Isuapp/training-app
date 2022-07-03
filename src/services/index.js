@@ -97,3 +97,21 @@ export const deleteTrainingServices = async (idTraining,admin)=>{
     if(!res.ok) throw new Error(body.message);
     console.log('Borrado con éxito');
   }
+
+
+  export const AddTrainingService = async ({admin, data})=>{
+
+    const res = await fetch(`${url}trainings/`,{
+      method:'POST',
+      headers:{
+        Authorization:admin,
+      },
+      body:data,
+    });
+
+    const body = await res.json();
+
+    if(!res.ok) throw new Error(body.message);
+
+    return body.data
+  }

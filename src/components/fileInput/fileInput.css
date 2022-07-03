@@ -14,12 +14,13 @@
 }
 .fileInput-wraper > label{
     cursor:pointer;
-    background-color: var(--mainColor-light);
+    background-color: var(--darkestColor);
     color:var(--white);
     padding:.5rem 1rem;
     border-radius: 2px;
     display: flex;
     gap:1rem;
+    width:10rem;
 }
 
 .fileInput-wraper > label > svg{

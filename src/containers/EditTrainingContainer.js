@@ -9,7 +9,7 @@ const EditTrainig = ()=>{
 
 
     const [admin] = useAdmin();
-    const [token, setTokenInLocalStorage] = useToken();
+    const [token, setToken] = useToken();
     const [handler, setHandler] = useHandler();
 
     const [error, setError] = useState(null);
@@ -17,9 +17,9 @@ const EditTrainig = ()=>{
     const [loading, setLoading] = useState(true);
 
 
-    const id = localStorage.getItem('idTraining')
+   /*  const id = localStorage.getItem('idTraining') */
 
-   const handleEditTraining = async(e)=>{
+  /*  const handleEditTraining = async(e)=>{
 
         try {
             const res = await fetch(`http://localhost:4000/trainings/${id}`,{
@@ -33,9 +33,9 @@ const EditTrainig = ()=>{
         } catch (error) {
 
         }
-    }
+    } */
 
-    const getTraining = async ()=>{
+  /*   const getTraining = async ()=>{
         console.log('handler', handler)
         setHandler(true)
         try {
@@ -61,16 +61,16 @@ const EditTrainig = ()=>{
         }finally{
 
         }
-    }
+    } */
 
-    useEffect(()=>{getTraining()},[])
+   /*  useEffect(()=>{getTraining()},[]) */
     return(
         <main>
             <h2>EDIT</h2>
-            <form onSubmit={handleEditTraining}>
+            <form /* onSubmit={handleEditTraining} */>
                 <Input />
             </form>
-            <button onClick={getTraining}>get</button>
+            <button /* onClick={getTraining} */>get</button>
             {error&&<p className="error" >{error}</p>}
             {success&&<p className="success" >{success}</p>}
         </main>

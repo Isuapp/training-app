@@ -17,19 +17,19 @@ import trash from '../../assets/brand/icons/trash.svg'
 import { useAdmin } from '../../context/adminContext';
 
 const Header = () => {
-  const [token,setTokenInLocalStorage] = useToken();
+  const [token,setToken] = useToken();
   const [handler, setHandler] = useHandler();
-  const [admin, setAdminInLocalStorage] = useAdmin();
+  const [admin, setAdmin] = useAdmin();
   
   const navigate = useNavigate();
 
   const logout = () => {
     if(token){
-      setTokenInLocalStorage(null);
+      setToken(null);
       localStorage.removeItem('token');
       navigate('/')
     }else{
-      setAdminInLocalStorage(null);
+      setAdmin(null);
       localStorage.removeItem('admin');
       navigate('/')
     }
@@ -43,16 +43,12 @@ const Header = () => {
   return(
     <header>
       <nav>
-        {handler &&
-        <>
-          <IconButton  onClick={back} icon={arrow}/>
-          <IconButton  onClick={back} icon={trash}/>
-          <IconButton  onClick={back} icon={edit}/>
-        </>
-        }
-        <IconButton onClick={logout} icon={signout}/> 
-        <IconButton /* onClick='#' */ icon={search}/> 
-        <NavIcon to='/add-training' icon={add} />
+      {handler && <IconButton  onClick={back} icon={arrow}/>}
+        {handler && <IconButton  onClick={back} icon={trash}/>}
+        {handler && <IconButton  onClick={back} icon={edit}/>}
+        {token||admin&&!handler && <IconButton onClick={logout} icon={signout}/> }
+        {token||admin&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
+        {token||admin&&!handler && <NavIcon to='/add-training' icon={add} />}
       </nav>
     </header>
   )

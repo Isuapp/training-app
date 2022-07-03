@@ -46,9 +46,12 @@ const Header = () => {
         {handler && <IconButton  onClick={back} icon={arrow}/>}
         {handler && <IconButton  onClick={back} icon={trash}/>}
         {handler && <IconButton  onClick={back} icon={edit}/>}
-        {token||admin&&!handler && <IconButton onClick={logout} icon={signout}/> }
-        {token||admin&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
-        {token||admin&&!handler && <NavIcon to='/add-training' icon={add} />}
+        {admin&&!handler && <IconButton onClick={logout} icon={signout}/> }
+        {admin&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
+        {admin&&!handler && <NavIcon to='/add-training' icon={add} />}
+        {token&&!handler && <IconButton onClick={logout} icon={signout}/> }
+        {token&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
+        {token&&!handler && <NavIcon to='/add-training' icon={add} />}
       </nav>
     </header>
   )

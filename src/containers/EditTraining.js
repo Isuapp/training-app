@@ -7,7 +7,7 @@ import { useToken } from "../context/TokenContext";
 
 const EditTrainig = ()=>{
 
-    
+
     const [admin] = useAdmin();
     const [token, setTokenInLocalStorage] = useToken();
     const [handler, setHandler] = useHandler();
@@ -19,11 +19,9 @@ const EditTrainig = ()=>{
 
     const id = localStorage.getItem('idTraining')
 
- /*    const handleEditTraining = async(e)=>{
-        
+   const handleEditTraining = async(e)=>{
+
         try {
-            
-            
             const res = await fetch(`http://localhost:4000/trainings/${id}`,{
                 method:'PUT',
                 headers:{
@@ -33,25 +31,25 @@ const EditTrainig = ()=>{
             const body = await res.json();
             console.log('Body:',body);
         } catch (error) {
-            
-        } 
-    } */
+
+        }
+    }
 
     const getTraining = async ()=>{
         console.log('handler', handler)
         setHandler(true)
         try {
             const authorization = token? token : admin;
-            const res = await fetch(`http://localhost:4000/trainings/5`,{
+            const res = await fetch(`http://localhost:4000/trainings/3`,{
             method:'GET',
             headers:{
             'content-type':'application/json',
             Authorization: authorization,
             }
         });
-            console.log(`RES:${res}`);
-      
-            const body = await res.json();
+
+
+            const body = await res.text();
             console.log(`Body:${body}`);
             if(body.status==='error'){
                 setError(body.message)
@@ -61,17 +59,17 @@ const EditTrainig = ()=>{
         } catch (error) {
             console.log(error)
         }finally{
-            
+
         }
     }
-    
+
     useEffect(()=>{getTraining()},[])
     return(
         <main>
             <h2>EDIT</h2>
-           {/*  <form onSubmit={handleEditTraining}>
+            <form onSubmit={handleEditTraining}>
                 <Input />
-            </form> */}
+            </form>
             <button onClick={getTraining}>get</button>
             {error&&<p className="error" >{error}</p>}
             {success&&<p className="success" >{success}</p>}

@@ -27,18 +27,18 @@ const ListTrainigs = ( ) => {
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showTraining, setShowTraining] = useState(false);
-  
+
   const getTrainings = async () =>{
 
     const authorization = token ? token : admin
     try {
-      
+
       const res = await fetch('http://localhost:4000/trainings',{
         headers:{
           Authorization: authorization,
         }
       });
-      
+
       const body = await res.json();
       console.log(body);
       if(body.status==='error') setError(body.message);
@@ -86,16 +86,16 @@ const ListTrainigs = ( ) => {
 
   useEffect(()=>{getTrainings()},[success])
 
-
+console.log(training);
   const showTrainings =   trainings.map(training=>(
       <li key={training.id} className='training' onClick={()=>showDetailTraining(training.id)}>
-        <div>  
-          <figure> 
-            
+        <div>
+          <figure>
+
             <img src={`http://localhost:4000/${training.image}`} alt={`image of training ${training.name}`} />
-            
+
             {/* <img src={brokenImage}  alt='image-preview'/> */}
-            
+
           </figure>
         <h4>{training.name}</h4></div>
         <div>
@@ -103,8 +103,9 @@ const ListTrainigs = ( ) => {
           <IconButton icon={edit} onClick={()=>{handleEditTraining(training.id)}}/>
         </div>
       </li>
-  ))
 
+  ))
+    console.log(showTrainings);
   const handleDeleteTraining = async (idTraining)=>{
 
     try {
@@ -127,7 +128,7 @@ const ListTrainigs = ( ) => {
 
 
     } catch (error) {
-      
+
     }
   }
 
@@ -138,11 +139,11 @@ const ListTrainigs = ( ) => {
         <button onClick={()=>{setShowTraining(false)}}>salir</button>
       </article>
   }) */
-  
+
   const handleLikes =async (like)=>{
 
     try {
-      
+
       const res = await fetch(`http://localhost:4000/trainings/${like}/likes`,{
         method:'POST',
         headers:{
@@ -163,7 +164,7 @@ const ListTrainigs = ( ) => {
       console.error(error)
     }
   }
-  
+
 
   return (
       <div className='training-wraper'>

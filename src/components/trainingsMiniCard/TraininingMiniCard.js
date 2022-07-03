@@ -9,7 +9,6 @@ import IconButton from '../iconButton/IconButton'
 import { Link } from 'react-router-dom';
 
 const TrainingMiniCard = ({ training,trash })=>{
-    console.log('training.id',training.id)
     return(
         <article className='training'>
             <Link to={`/trainings/${training.id}`} className='link'>  

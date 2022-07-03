@@ -15,15 +15,18 @@ export const getAllTrainingsService = async (auth)=>{
     return body.data.trainings;
 }
 
-export const getSingleTrainingsService = async (auth,idTraining)=>{
-  console.log('ID>>',idTraining)
+export const getSingleTrainingsService = async (idTraining,auth)=>{
+  
+  console.log(`AUTH:${auth},  ID:${idTraining}`);
   const res = await fetch(`${url}trainings/${idTraining}`,{
         headers:{
           Authorization: auth,
         }
       });
+
+    console.log('RES', res);
     const body = await res.json();
-    console.log('body', body);
+    console.log('BODY', body);
 
     if(!res.ok) throw new Error(body.message);
 

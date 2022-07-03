@@ -29,7 +29,6 @@ function App() {
         <Route path='/trainings/:id' element={<TrainingDetailsContainer />}/>
         <Route path='/register' element={<RegisterContainer />}/>
         <Route path='/login' element={<LoginContainer />}/>
-        <Route path='/training-details' element={<TrainingDetailsContainer />}/>
         <Route path='/add-training' element={<AddTrainigContainer />}/>
         <Route path='/edit-training' element={<EditTrainingContainer />}/>
         <Route path='/filters' element={<FiltersContainer />}/>

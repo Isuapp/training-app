@@ -8,6 +8,7 @@ const useTraining = (idTraining)=>{
     const [training, setTraining] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(null);
+
     const [admin] = useAdmin();
     const [token] = useToken();
 
@@ -17,8 +18,8 @@ const useTraining = (idTraining)=>{
         const loadTraining = async ()=>{
             try{
                 setLoading(true);
-
-                const data = await getSingleTrainingsService(authorization, idTraining);
+                console.log('idTraining',idTraining);
+                const data = await getSingleTrainingsService(idTraining, authorization);
 
                 setTraining(data);
         
@@ -33,7 +34,7 @@ const useTraining = (idTraining)=>{
 
     }, [idTraining])
 
-    return { training, error, loading}
+    return {  training, error, loading}
 };
 
 export default useTraining;

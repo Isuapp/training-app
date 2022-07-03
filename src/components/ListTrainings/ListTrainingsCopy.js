@@ -132,7 +132,7 @@ console.log(training);
     }
   }
 
-/*   const trainingDetail = training.map((tr)=>{
+  /* const trainingDetail = training.map((tr)=>{
       <article key={tr.id}>
         <p>{tr.name}</p>
         <p>{tr.description}</p>

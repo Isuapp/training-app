@@ -1,0 +1,32 @@
+
+article.training-detail{
+    background-color: var(--mainColor);
+    padding:1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap:.5rem;
+    width:20rem;
+    border-radius: 5px;
+    margin:2rem auto;
+}
+article.training-detail> div> p:first-child{
+    color:var(--darkestColor);
+    padding:1rem 0rem;
+}
+article.training-detail> div:nth-child(2)> p:nth-child(2){
+    background-color: var(--white);
+    display: inline;
+    padding:.5rem 1rem;
+    border-radius: 30%;
+}
+
+article.training-detail> div:nth-child(3)> p:nth-child(2){
+    background-color: var(--white);
+    display: inline;
+    padding:.5rem 1rem;
+    border-radius: 30%;
+}
+article.training-detail> .icon-button{
+    background-color: transparent;
+    margin-left:auto;
+}

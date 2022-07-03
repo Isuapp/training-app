@@ -1,17 +1,46 @@
+import { Link, useParams } from "react-router-dom";
+import useTraining from "../hooks/useTraining";
+
+
+import Training from "../components/training/Training";
+
+import { likesService } from "../services";
+import { useAdmin } from "../context/adminContext";
+import { useToken } from "../context/TokenContext";
+import { useState } from "react";
+
 const TrainingDetails = ()=>{
 
-/*     const getTraining = async ()=>{
+    const {idTraining} = useParams();
+    
+    const {training, loading, error} = useTraining(idTraining);
+    const [admin] = useAdmin();
+    const [token] = useToken();
+    
+    if(loading) return <p>Loading...</p>
+    if(error) return <p>{error}</p>
 
+    const handleLikes =async (like)=>{
         try {
-            
-            const res = await fetch(`http://localhost:4000/trainings/${idTraining}`);
+
+            const authorization = token? token : admin;
+            console.log(like, authorization);
+          
+            const data = await likesService(like, authorization)
+
+            console.log(data)
+          
         } catch (error) {
-            
+          console.error(error)
         }
-    } */
+      }
     return(
         <main>
-            <h2>TrainingDetails</h2>
+           <Training 
+                training={training} 
+                likes={()=>{handleLikes(training.id)}}
+           />
+           <Link to='/trainings'>Go back trainings</Link>
         </main>
     )
 }

@@ -43,12 +43,16 @@ const Header = () => {
   return(
     <header>
       <nav>
-        {handler && <IconButton  onClick={back} icon={arrow}/>}
-        {handler && <IconButton  onClick={back} icon={trash}/>}
-        {handler && <IconButton  onClick={back} icon={edit}/>}
-        {token||admin&&!handler && <IconButton onClick={logout} icon={signout}/> }
-        {token||admin&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
-        {token||admin&&!handler && <NavIcon to='/add-training' icon={add} />}
+        {handler &&
+        <>
+          <IconButton  onClick={back} icon={arrow}/>
+          <IconButton  onClick={back} icon={trash}/>
+          <IconButton  onClick={back} icon={edit}/>
+        </>
+        }
+        <IconButton onClick={logout} icon={signout}/> 
+        <IconButton /* onClick='#' */ icon={search}/> 
+        <NavIcon to='/add-training' icon={add} />
       </nav>
     </header>
   )

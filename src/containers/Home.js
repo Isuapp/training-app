@@ -1,11 +1,11 @@
-import ListTrainigs from "../components/listTrainigs/ListTrainings";
+import ListTrainings from "../components/ListTrainings/ListTrainings";
 
 
 const Home = ()=>{
 
     return(
         <main>
-            <ListTrainigs />
+            <ListTrainings />
         </main>
     )
 }

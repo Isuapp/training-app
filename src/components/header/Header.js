@@ -43,7 +43,7 @@ const Header = () => {
   return(
     <header>
       <nav>
-      {handler && <IconButton  onClick={back} icon={arrow}/>}
+        {handler && <IconButton  onClick={back} icon={arrow}/>}
         {handler && <IconButton  onClick={back} icon={trash}/>}
         {handler && <IconButton  onClick={back} icon={edit}/>}
         {token||admin&&!handler && <IconButton onClick={logout} icon={signout}/> }

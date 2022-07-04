@@ -1,15 +1,15 @@
 import { url } from "../utils/variables"
 
-export const getAllTrainingsService = async (auth)=>{
+export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
 
-  const res = await fetch(`${url}trainings`,{
+  const res = await fetch(`${url}trainings?typology=${typology}&muscleGroup=${muscleGroup}`,{
         headers:{
           Authorization: auth,
         }
       });
 
     const body = await res.json();
-
+    console.log('BODY', body)
     if(!res.ok) throw new Error(body.message);
 
     return body.data.trainings;
@@ -135,19 +135,3 @@ export const editTrainingService = async ({id, admin, data})=>{
   return body.data
 }
 
-export const filterTrainingsService = async (by, key, auth)=>{
-  
-  
-  const res = await fetch(`${url}trainings?${by}=${key}`,{
-        headers:{
-          Authorization: auth,
-        }
-      });
-
-   
-    const body = await res.json();
-    console.log('body filtered', body)
-    if(!res.ok) throw new Error(body.message);
-
-    return body.data;
-}

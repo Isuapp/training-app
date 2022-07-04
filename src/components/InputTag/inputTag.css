@@ -1,0 +1,15 @@
+div.input-wraper{
+}
+div.input-wraper> label{
+    background-color: var(--mainColor);
+    color:var(--darkestColor);
+    border-radius:30%;
+    padding:.5rem .5rem;
+}
+div.input-wraper> input{
+}
+
+.input:checked + .label{
+    background-color: red;
+}
+

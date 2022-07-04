@@ -1,4 +1,4 @@
-const Filters = ()=>{
+const FiltersContainer = ()=>{
 
     return(
         <main>
@@ -7,4 +7,4 @@ const Filters = ()=>{
     )
 }
 
-export default Filters;
+export default FiltersContainer;

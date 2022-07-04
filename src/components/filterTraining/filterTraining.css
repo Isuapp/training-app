@@ -1,0 +1,23 @@
+form.filter-form{
+    width:20rem;
+    padding:2rem 1rem;
+}
+
+form.filter-form> div:first-child{
+    margin-bottom: 2rem;
+}
+form.filter-form> div> div{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2rem;
+
+}
+form.filter-form> div> h4{
+    margin-bottom: 1rem;
+}
+form.filter-form> div> div> .input-wraper:first-child{
+   
+}
+form.filter-form>button{
+    padding:1rem;
+}

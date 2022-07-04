@@ -17,6 +17,7 @@ import NotFoundContainer from './containers/NotFoundContainer';
 import { useModal } from './context/modalContext';
 import { useToken } from './context/TokenContext';
 import { useAdmin } from './context/adminContext';
+import FilterTraining from './components/filterTraining/FilterTraining';
 
 function App() {
 
@@ -35,6 +36,8 @@ function App() {
         <Route path='/login' element={<LoginContainer />}/>
         <Route path='/add-training' element={<AddTrainigContainer />}/>
         <Route path='/edit-training/:id' element={<EditTrainingContainer />}/>
+        <Route path='/filter' element={<FilterTraining />}/>
+        
         <Route path='/trainings?:by=:key' element={<FiltersContainer />}/>
         <Route path='*' element={<NotFoundContainer />}/>
       </Routes>

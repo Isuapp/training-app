@@ -6,6 +6,8 @@ import { getAllTrainingsService } from "../services";
 const useTrainings =()=>{
 
     const [trainings, setTrainings] = useState([]);
+    const [typology, setTypology] = useState('')
+    const [muscleGroup, setMuscleGroup] = useState('')
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [admin] = useAdmin();
@@ -17,7 +19,7 @@ const useTrainings =()=>{
         const getAllTrainings = async  ()=>{
             try{
                 setLoading(true);
-                const data = await getAllTrainingsService(authorization);
+                const data = await getAllTrainingsService(typology, muscleGroup, authorization);
                 setTrainings(data)
                 setLoading(false);
             }catch (error){
@@ -28,9 +30,9 @@ const useTrainings =()=>{
         };
 
         getAllTrainings();
-    }, [])
+    }, [typology, muscleGroup, setTypology, setMuscleGroup ])
 
-    return {trainings,loading,error}
+    return {typology, muscleGroup, setTypology ,setMuscleGroup , trainings,loading,error}
 }
 
 export default useTrainings;

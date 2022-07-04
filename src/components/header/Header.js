@@ -2,6 +2,8 @@ import './header.css';
 
 import { useToken} from "../../context/TokenContext"
 import { useHandler } from '../../context/HandlerContext';
+import { useModal } from '../../context/modalContext';
+import { useAdmin } from '../../context/adminContext';
 
 
 import NavIcon from '../navIcon/NavIcon';
@@ -14,12 +16,14 @@ import search from '../../assets/brand/icons/search.svg'
 import arrow from '../../assets/brand/icons/angle-left.svg'
 import edit from '../../assets/brand/icons/pencil.svg'
 import trash from '../../assets/brand/icons/trash.svg'
-import { useAdmin } from '../../context/adminContext';
+import FilterTraining from '../filterTraining/FilterTraining';
+
 
 const Header = () => {
   const [token,setToken] = useToken();
   const [handler, setHandler] = useHandler();
   const [admin, setAdmin] = useAdmin();
+  const [,setModal] = useModal();
   
   const navigate = useNavigate();
 
@@ -47,10 +51,10 @@ const Header = () => {
         {handler && <IconButton  onClick={back} icon={trash}/>}
         {handler && <IconButton  onClick={back} icon={edit}/>}
         {admin&&!handler && <IconButton onClick={logout} icon={signout}/> }
-        {admin&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
+        {admin&&!handler && <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={search}/> }
         {admin&&!handler && <NavIcon to='/add-training' icon={add} />}
         {token&&!handler && <IconButton onClick={logout} icon={signout}/> }
-        {token&&!handler && <IconButton /* onClick='#' */ icon={search}/> }
+        {token&&!handler && <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={search}/> }
         {token&&!handler && <NavIcon to='/add-training' icon={add} />}
       </nav>
     </header>

@@ -1,57 +1,56 @@
-import jwt from 'jwt-decode';
+import './editTraining.css';
 
-import { addTrainingService } from "../../services";
-import { muscles, typologies } from "../../utils/variables";
-import { useState } from "react";
-
-import Input from "../input/Input";
-import FileInput from '../fileInput/FileInput';
+import Input from '../input/Input';
+import FileInput from '../fileInput/FileInput.js'; 
+import { useState } from 'react';
+import { typologies, muscles } from '../../utils/variables';
 import { useAdmin } from '../../context/adminContext';
-const AddTraining = ()=>{
+import { editTrainingService } from '../../services';
+import { useParams } from 'react-router-dom';
 
 
-    const [admin] = useAdmin();
+const EditTrainig = ()=>{
+const {id} = useParams()
 
-    const [name, setName ] = useState('');
+
+    const [admin] = useAdmin();    
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
     const [typology, setTypology] = useState('');
     const [muscleGroup, setMuscleGroup] = useState('');
-    const [description, setDescription] = useState('');
-    const [images, setImage] = useState(null);
- 
+    const [images, setImages] = useState('');
 
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const handleAddTraining = async(e)=>{
-        e.preventDefault();
-        
+    const handleEdit = async (e)=>{
+        e.preventDefault()
         try {
+            setLoading(true);
 
-            const user = jwt(admin);
-            const idUser =  user.idUser;
-            const data= new FormData();
-
-            data.append('idUser', idUser);
+            const data = new FormData();
             data.append('name', name);
             data.append('description', description);
             data.append('typology', typology);
             data.append('muscleGroup', muscleGroup);
             data.append('image', images);
-            console.log(admin);
-            const training = await  addTrainingService({data, admin});
+            
+            const training = await editTrainingService({id, admin, data})
+            console.log(training)
+            setSuccess(true);
 
-            setSuccess(true)
         } catch (error) {
             console.error(error)
+        }finally{
+            setLoading(false)
         }
     }
 
-
     return(
         <main>
-        <h2>AddTrainig</h2>
-        <form onSubmit={handleAddTraining}>
+        <h2>Edit Training</h2>
+        <form onSubmit={handleEdit}>
             <Input
                 label='name'
                 type='text'
@@ -83,7 +82,7 @@ const AddTraining = ()=>{
             </select>
             <FileInput
                 className='fileInput-wraper'
-                onChange={(e)=>{ setImage(e.target.files[0])}}
+                onChange={(e)=>{ setImages(e.target.files[0])}}
             >
                 {images ? 
                 <figure>
@@ -95,7 +94,7 @@ const AddTraining = ()=>{
             </FileInput>
             <button disabled={loading}>
                 {loading && 'LOADING'}
-                {!loading && 'ADD TRAINING'}
+                {!loading && 'UPDATE TRAINING'}
             </button>
         </form>
         {error && <p className='error'>{error}</p>}
@@ -104,4 +103,4 @@ const AddTraining = ()=>{
     )
 }
 
-export default AddTraining;
+export default EditTrainig;

@@ -30,7 +30,7 @@ function App() {
         <Route path='/register' element={<RegisterContainer />}/>
         <Route path='/login' element={<LoginContainer />}/>
         <Route path='/add-training' element={<AddTrainigContainer />}/>
-        <Route path='/edit-training' element={<EditTrainingContainer />}/>
+        <Route path='/edit-training/:id' element={<EditTrainingContainer />}/>
         <Route path='/filters' element={<FiltersContainer />}/>
         <Route path='*' element={<NotFoundContainer />}/>
       </Routes>

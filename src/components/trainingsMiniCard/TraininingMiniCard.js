@@ -8,7 +8,7 @@ import edit from '../../assets/brand/icons/pencil.svg'
 import IconButton from '../iconButton/IconButton'
 import { Link } from 'react-router-dom';
 
-const TrainingMiniCard = ({ training,trash })=>{
+const TrainingMiniCard = ({ training, handleTrash })=>{
     return(
         <article className='training'>
             <Link to={`/trainings/${training.id}`} className='link'>  
@@ -19,8 +19,8 @@ const TrainingMiniCard = ({ training,trash })=>{
             </Link>
             <p>{training.likes}</p>
             <div>
-                <IconButton icon={trash} onClick={trash} />
-                <IconButton icon={edit} /* onClick={()=>{handleEditTraining(training.id)}} *//>
+                <IconButton icon={trash} onClick={handleTrash} />
+                <Link to={`/edit-training/${training.id}`}>edit</Link>
             </div>
         </article>
     )

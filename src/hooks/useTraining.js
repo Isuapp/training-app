@@ -18,7 +18,7 @@ const useTraining = (idTraining)=>{
         const loadTraining = async ()=>{
             try{
                 setLoading(true);
-                console.log('idTraining',idTraining);
+                
                 const data = await getSingleTrainingsService(idTraining, authorization);
 
                 setTraining(data);

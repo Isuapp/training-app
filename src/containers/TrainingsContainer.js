@@ -6,9 +6,10 @@ const Trainings = ()=>{
 
     const {trainings, loading, error} = useTrainings();
     const [token] = useToken();
+    
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
-    console.log(token)
+    
     return(
         <main>
             <ListTrainings  trainings={trainings}/>

@@ -17,16 +17,15 @@ export const getAllTrainingsService = async (auth)=>{
 
 export const getSingleTrainingsService = async (idTraining,auth)=>{
   
-  console.log(`AUTH:${auth},  ID:${idTraining}`);
+  
   const res = await fetch(`${url}trainings/${idTraining}`,{
         headers:{
           Authorization: auth,
         }
       });
 
-    console.log('RES', res);
+   
     const body = await res.json();
-    console.log('BODY', body);
 
     if(!res.ok) throw new Error(body.message);
 
@@ -102,7 +101,7 @@ export const deleteTrainingServices = async (idTraining,admin)=>{
   }
 
 
-  export const AddTrainingService = async ({admin, data})=>{
+  export const addTrainingService = async ({admin, data})=>{
 
     const res = await fetch(`${url}trainings/`,{
       method:'POST',
@@ -113,8 +112,25 @@ export const deleteTrainingServices = async (idTraining,admin)=>{
     });
 
     const body = await res.json();
-
+    console.log(body);
     if(!res.ok) throw new Error(body.message);
 
     return body.data
   }
+
+export const editTrainingService = async ({id, admin, data})=>{
+
+  const res = await fetch(`${url}trainings/${id}`,{
+    method:'PUT',
+    headers:{
+      Authorization: admin,
+    },
+    body:data,
+  });
+
+  const body = await  res.json();
+  console.log(body);
+  if(!res.ok) throw new Error(body.message);
+
+  return body.data
+}

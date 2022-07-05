@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useAdmin } from "../context/adminContext";
-import { useToken } from "../context/TokenContext";
+import { useUser } from "../context/UserContext";
 import { getSingleTrainingsService } from "../services";
 
 
@@ -10,9 +10,9 @@ const useTraining = (idTraining)=>{
     const [loading, setLoading] = useState(null);
 
     const [admin] = useAdmin();
-    const [token] = useToken();
+    const [user] = useUser();
 
-    const authorization = token? token : admin;
+    const authorization = user? user : admin;
 
     useEffect(()=>{
         const loadTraining = async ()=>{

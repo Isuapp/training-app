@@ -15,12 +15,12 @@ export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
     return body.data.trainings;
 }
 
-export const getSingleTrainingsService = async (idTraining,auth)=>{
+export const getSingleTrainingsService = async (idTraining,authorization)=>{
   
   
   const res = await fetch(`${url}trainings/${idTraining}`,{
         headers:{
-          Authorization: auth,
+          Authorization: authorization,
         }
       });
 
@@ -135,4 +135,18 @@ export const editTrainingService = async ({id, admin, data})=>{
 
   return body.data
 }
+/* 
+export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
 
+  const res = await fetch(`${url}trainings?typology=${typology}&muscleGroup=${muscleGroup}`,{
+        headers:{
+          Authorization: auth,
+        }
+      });
+
+    const body = await res.json();
+    
+    if(!res.ok) throw new Error(body.message);
+
+    return body.data.trainings;
+} */

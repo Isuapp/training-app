@@ -6,7 +6,7 @@ import Training from "../components/training/Training";
 
 import { likesService } from "../services";
 import { useAdmin } from "../context/adminContext";
-import { useToken } from "../context/TokenContext";
+import { useUser } from "../context/UserContext";
 
 const TrainingDetails = ()=>{
     const {id} = useParams();
@@ -17,7 +17,7 @@ const TrainingDetails = ()=>{
     setHandler(true);
     const {training, loading, error} = useTraining(id);
     const [admin] = useAdmin();
-    const [token] = useToken();
+    const [user] = useUser();
     
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
@@ -25,7 +25,7 @@ const TrainingDetails = ()=>{
     const handleLikes =async (like)=>{
         try {
 
-            const authorization = token? token : admin;
+            const authorization = user? user : admin;
             console.log(like, authorization);
           
             const data = await likesService(like, authorization)

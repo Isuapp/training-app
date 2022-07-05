@@ -2,14 +2,14 @@ import './filterTraining.css';
 
 import { useParams } from "react-router-dom";
 import {useAdmin} from '../../context/adminContext'
-import {useToken} from '../../context/TokenContext'
+import {useUser} from '../../context/UserContext'
 import { muscles, typologies } from "../../utils/variables";
 
 
 import InputTag from '../InputTag/InputTag';
 import useTrainings from '../../hooks/useTrainings';
 
-const FilterTraining = ()=>{
+const FilterTraining = ({onChangeMuscle, onChangeTypology})=>{
 
 
     const {
@@ -23,25 +23,28 @@ const FilterTraining = ()=>{
         = useTrainings();    
     
     const [admin, setAdmin] = useAdmin();
-    const [ token, setToken] = useToken();
+    const [ user, setUser] = useUser();
 
    
 
     return(
-        <form className='filter-form'>
+        
+        <form className='filter-form' >
         <div>
             <h4>Muscle Group</h4>
             <div>
                 {muscles.map(muscle=>{
                     return(
-                     <InputTag
+                    <InputTag
                         key={muscle.id}
-                        name='muscleGroup'
+                        name='muscleGroup'  
                         keyword={muscle.name}
-                        onChange={(e)=>{setMuscleGroup(e.target.value); console.log('muscleGRoup', muscleGroup)}}
-                     />
+                        onChange={onChangeMuscle}
+                        idMuscle={muscle.id}
+                    />
                     )
                 })}
+                
             </div>
         </div>
 
@@ -54,7 +57,7 @@ const FilterTraining = ()=>{
                         key={type.id}
                         name='typology'
                         keyword={type.name}
-                        onChange={(e)=>{setTypology(e.target.value);console.log('typology', typology)}}
+                        onChange={onChangeTypology}
                     />
                 )
             })}

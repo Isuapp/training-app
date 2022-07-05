@@ -1,32 +1,32 @@
 import { createContext, useState, useContext } from "react";
 
 //  Crea el context para que sea accesible enm toda la app
-const TokenContext = createContext(null);
+const UserContext = createContext(null);
 
 // Creamos el componente que envolvera toda la app
-export const TokenProvider = ({children})=>{
+export const UserProvider = ({children})=>{
 
     // Creamos la variable con useState para poder manejarla 
     // Esta variable regoera un objeto que llamaremos token 
     // y almacenaremos en el localstorage
-    const [ token, setToken] = useState(localStorage.getItem('token'));
+    const [ user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
     // Creamos la función que nos permita almacenar el localstorage
-    const setTokenInLocalStorage = (tokenValue)=>{
-        localStorage.setItem('token', tokenValue);
-        setToken(tokenValue)
+    const setUserInLocalStorage = (userValue)=>{
+        localStorage.setItem('user', JSON.stringify(userValue));
+        setUser(userValue)
     }
 
     // Retornamos el contexto
     return(
-        <TokenContext.Provider value={[token, setTokenInLocalStorage]}>
+        <UserContext.Provider value={[user, setUserInLocalStorage]}>
             {children}
-        </TokenContext.Provider>
+        </UserContext.Provider>
     )
 }
 
 // Creamos el hook para manejarlo
-export const useToken = ()=>{
-    return useContext(TokenContext)
+export const useUser = ()=>{
+    return useContext(UserContext)
 }
 

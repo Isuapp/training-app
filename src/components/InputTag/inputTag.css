@@ -9,7 +9,7 @@ div.input-wraper> label{
 div.input-wraper> input{
 }
 
-.input:checked + .label{
+div.input-wraper>input[type='radius']:checked{
     background-color: red;
 }
 

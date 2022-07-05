@@ -2,8 +2,7 @@ import './login.css'
 
 // IMportamos los manejadores que usaremos.
 import { useState } from "react";
-import { useToken } from "../../context/TokenContext";
-import { useAdmin } from '../../context/adminContext';
+import { useUser } from "../../context/UserContext";
 
 // Importamos el componente personalizado que hemos creado.
 import Input from "../input/Input";
@@ -12,15 +11,13 @@ import Input from "../input/Input";
 import { useNavigate } from "react-router-dom";
 import { loginService } from '../../services';
 
-import jwt from 'jwt-decode'
 import Button from '../button/Button';
 
 const LoginContainer = ({move})=>{
     
     const navigate = useNavigate()
     // LLamamos a la variable  token para manejarla
-    const [token,setToken] = useToken();
-    const [admin,setAdmin] = useAdmin()
+    const [,setUser] = useUser();
 
     // LLamamos a las variables que usaremoms para actualizar los datos
     const [email, setEmail] = useState('');
@@ -41,17 +38,9 @@ const LoginContainer = ({move})=>{
         try {
             
             const data = await loginService({email, password});
-            const user = jwt(data);
             
-            if(user.role==='admin'){
-                setAdmin(data)
-                console.log('token admin:', admin)
-                navigate('/trainings');
-            }else{
-                setToken(data)
-                console.log('token user:', token)
-                navigate('/trainings');
-            }
+            setUser(data)
+            navigate('/trainings');
 
         } catch (error) {
             setError(error.message)

@@ -1,16 +1,15 @@
 import './inputTag.css';
 
-const InputTag = ({name, keyword, onChange})=>{
+const InputTag = ({name, keyword, onChange, idMuscle})=>{
 
 
     return(
         <div className='input-wraper'>
-            <label htmlFor={keyword} className='label'>{keyword}</label>
+            <label htmlFor={`typology${idMuscle}`} >{keyword} </label>
             <input 
                 name={name}
-                className='input'
                 type='radio'
-                id={keyword}
+                id={`typology${idMuscle}`}
                 value={keyword}
                 onChange={onChange}
             />

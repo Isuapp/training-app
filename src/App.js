@@ -41,7 +41,6 @@ function App() {
         <Route path='/trainings?:by=:key' element={<FiltersContainer />}/>
         <Route path='*' element={<NotFoundContainer />}/>
       </Routes>
-      {modal && <Modal>{modal}</Modal>}
     </div>
   );
 }

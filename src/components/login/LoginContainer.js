@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { loginService } from '../../services';
 
 import jwt from 'jwt-decode'
+import Button from '../button/Button';
 
 const LoginContainer = ({move})=>{
     
@@ -28,6 +29,8 @@ const LoginContainer = ({move})=>{
     // Llamamos a las variables que usaremos para recibir feedback del backend.
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const [active, setActive] = useState(false);
 
     const handleLogin = async (e)=>{
         e.preventDefault();
@@ -68,20 +71,26 @@ const LoginContainer = ({move})=>{
                     type='email'
                     value={email}
                     // Al escribir en el input usamos el manejador para actualizarl la variable correspondiente
-                    onChange={(e)=>setEmail(e.target.value)}
+                    onChange={(e)=>{setEmail(e.target.value);
+                                    if (e.target.value !== '') setActive(true)
+                                    else setActive(false)}}
+                    active={active}
                 />
                 <Input
                     label='password'
                     type='password'
                     value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                />
+                    onChange={(e)=>{setPassword(e.target.value)
+                        if (e.target.value !== '') setActive(true)
+                        else setActive(false)}}
+                        active={active}
+                    />
                 <div>
+                    <Button
+                        name={loading ? 'loading..': 'login'}
+                        disabled={loading}
+                    />
                     <span className='text-link' onClick={move}>not registered? Register!</span>
-                    <button disabled={loading} >
-                        {!loading && 'login'}
-                        {loading && 'cargando..'}
-                    </button>
 
                 </div>
             </form>

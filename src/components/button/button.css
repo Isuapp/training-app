@@ -1,0 +1,9 @@
+button.button {
+    border:none;
+    padding:.7rem 1.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: var(--mainColor);
+    font-size: 1.3rem;
+    border-radius: 2px;
+}

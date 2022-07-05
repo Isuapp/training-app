@@ -7,9 +7,10 @@ import { useState } from "react";
 import Input from "../input/Input";
 import FileInput from '../fileInput/FileInput';
 import { useAdmin } from '../../context/adminContext';
+import { useNavigate } from 'react-router-dom';
 const AddTraining = ()=>{
 
-
+    let navigate = useNavigate()
     const [admin] = useAdmin();
 
     const [name, setName ] = useState('');
@@ -40,6 +41,7 @@ const AddTraining = ()=>{
             data.append('image', images);
             console.log(admin);
             const training = await  addTrainingService({data, admin});
+            navigate('/trainings')
 
             setSuccess(true)
         } catch (error) {

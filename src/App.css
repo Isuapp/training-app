@@ -31,3 +31,29 @@ p.text-link{
 main.main-app{
   padding:0 0 8rem 0;
 }
+
+section.form-wraper{
+  padding:1rem 1rem;
+}
+
+section.form-wraper form{
+  background-color: var(--darkColor);
+  padding:3rem 1rem;
+}
+
+section.form-wraper>h2{
+  transform: translateY(1.5rem);
+  text-align: center;
+}
+
+select{
+  border:none;
+  padding:.7rem 1.3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: var(--mainColor);
+  border-radius: 2px;
+  min-width: 15rem;
+  width:100%;
+  margin:1rem 0rem;
+}

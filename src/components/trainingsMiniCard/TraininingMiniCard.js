@@ -18,7 +18,6 @@ const TrainingMiniCard = ({ training, handleTrash })=>{
                 </figure>
                 <h4>{training.name}</h4>
             </Link>
-            <p>{training.likes}</p>
             <div>
                 <IconButton icon={trash} onClick={handleTrash} />
                 <NavIcon 

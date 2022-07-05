@@ -1,6 +1,6 @@
 import './header.css';
 
-import { useToken} from "../../context/TokenContext"
+import { useUser} from "../../context/UserContext"
 import { useHandler } from '../../context/HandlerContext';
 import { useModal } from '../../context/modalContext';
 import { useAdmin } from '../../context/adminContext';
@@ -20,7 +20,7 @@ import FilterTraining from '../filterTraining/FilterTraining';
 
 
 const Header = () => {
-  const [token,setToken] = useToken();
+  const [user,setUser] = useUser();
   const [handler, setHandler] = useHandler();
   const [admin, setAdmin] = useAdmin();
   const [,setModal] = useModal();
@@ -28,14 +28,10 @@ const Header = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    if(token){
-      setToken(null);
-      localStorage.removeItem('token');
-      navigate('/')
-    }else{
-      setAdmin(null);
-      localStorage.removeItem('admin');
-      navigate('/')
+    if(user){
+      setUser(null);
+      localStorage.removeItem('user');
+      navigate('/login')
     }
   }
 
@@ -53,9 +49,9 @@ const Header = () => {
         {admin&&!handler && <IconButton onClick={logout} icon={signout}/> }
         {admin&&!handler && <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={search}/> }
         {admin&&!handler && <NavIcon to='/add-training' icon={add} />}
-        {token&&!handler && <IconButton onClick={logout} icon={signout}/> }
-        {token&&!handler && <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={search}/> }
-        {token&&!handler && <NavIcon to='/add-training' icon={add} />}
+        {user&&!handler && <IconButton onClick={logout} icon={signout}/> }
+        {user&&!handler && <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={search}/> }
+        {user&&!handler && <NavIcon to='/add-training' icon={add} />}
       </nav>
     </header>
   )

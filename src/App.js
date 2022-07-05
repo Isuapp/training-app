@@ -15,13 +15,13 @@ import TrainingsContainer from './containers/TrainingsContainer';
 import NotFoundContainer from './containers/NotFoundContainer';
 
 import { useModal } from './context/modalContext';
-import { useToken } from './context/TokenContext';
+import { useUser } from './context/UserContext';
 import { useAdmin } from './context/adminContext';
 import FilterTraining from './components/filterTraining/FilterTraining';
 
 function App() {
 
-  const [token]=useToken();
+  const [user]=useUser();
   const [admin]=useAdmin();
   const [modal]=useModal();
   return (

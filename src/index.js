@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { TokenProvider } from './context/TokenContext';
+import { UserProvider } from './context/UserContext';
 import { HandlerProvider } from './context/HandlerContext';
 import { AdminProvider } from './context/adminContext';
 import { ModalProvider } from './context/modalContext';
@@ -15,11 +15,11 @@ root.render(
     <ModalProvider>
       <AdminProvider>
         <HandlerProvider>
-          <TokenProvider>
+          <UserProvider>
             <BrowserRouter>
               <App />
             </BrowserRouter>
-          </TokenProvider>
+          </UserProvider>
         </HandlerProvider>
       </AdminProvider>
     </ModalProvider>

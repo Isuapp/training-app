@@ -2,7 +2,7 @@ import './register.css';
 
 // IMportamos los manejadores que vamos a usar
 import { useState } from "react";
-import { useToken } from "../../context/TokenContext";
+import { useUser } from "../../context/UserContext";
 import { useAdmin } from '../../context/adminContext';
 
 // Importamos el componente Navigate para redireccionarnos dónde queramos
@@ -17,7 +17,7 @@ import Button from '../button/Button';
 const RegisterContainer = ({move})=>{
     const navigate = useNavigate()
     // LLamamos a la variable  token para manejarla
-    const [ token] = useToken();
+    const [ user] = useUser();
     const [admin] =  useAdmin();
     // LLamamos a las variables que usaremoms para actualizar los datos
     const [name, setName] = useState('');

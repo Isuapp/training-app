@@ -5,17 +5,17 @@ import { useEffect, useState } from "react";
 import Register from "../components/register/RegisterContainer";
 import { useNavigate } from "react-router-dom";
 import { useAdmin } from "../context/adminContext";
-import { useToken } from "../context/TokenContext";
+import { useUser } from "../context/UserContext";
 
 
 const Landing = ()=>{
 
     const [admin] = useAdmin();
-    const [token] = useToken();
+    const [user] = useUser();
     const navigate = useNavigate();
     const [registered, setRegistered] = useState(true);
     useEffect(()=>{
-        if(token|| admin ) navigate('/trainings');
+        if(user|| admin ) navigate('/trainings');
     })
     
 

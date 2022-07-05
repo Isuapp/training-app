@@ -6,12 +6,13 @@ import { useState } from 'react';
 import { typologies, muscles } from '../../utils/variables';
 import { useAdmin } from '../../context/adminContext';
 import { editTrainingService } from '../../services';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const EditTrainig = ()=>{
-const {id} = useParams()
+    const {id} = useParams()
 
+    const navigate = useNavigate()
 
     const [admin] = useAdmin();    
     const [name, setName] = useState('');
@@ -36,8 +37,8 @@ const {id} = useParams()
             data.append('muscleGroup', muscleGroup);
             data.append('image', images);
             
-            const training = await editTrainingService({id, admin, data})
-            console.log(training)
+            await editTrainingService({id, admin, data})
+            navigate('/trainings');
             setSuccess(true);
 
         } catch (error) {

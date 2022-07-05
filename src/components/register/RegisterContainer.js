@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 // Importamos el componente personalizado que hemos creado.
 import Input from "../input/Input";
 import { registerService } from '../../services';
+import Button from '../button/Button';
 
 
 const RegisterContainer = ({move})=>{
@@ -28,6 +29,7 @@ const RegisterContainer = ({move})=>{
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null)
+    const [active, setActive] = useState(false);
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -69,40 +71,59 @@ const RegisterContainer = ({move})=>{
                     value={name}
                     name='name'
                     // Al escribir en el input usamos el manejador para actualizarl la variable correspondiente
-                    onChange={(e)=> setName(e.target.value)}
+                    onChange={(e)=> {setName(e.target.value)
+                        if (e.target.value !== '') setActive(true)
+                        else setActive(false)}}
+                        active={active}
                     label='name'
                 />
                 <Input
                     type='email'
                     value={email}
                     name='email'
-                    onChange={(e)=> setEmail(e.target.value)}
+                    onChange={(e)=> {setEmail(e.target.value)
+                        if (e.target.value !== '') setActive(true)
+                        else setActive(false)}}
+                        active={active}
                     label='email'
                 />
                 <Input
                     type='text'
                     value={password}
                     name='password'
-                    onChange={(e)=> setPassword(e.target.value)}
+                    onChange={(e)=> {setPassword(e.target.value)
+                        if (e.target.value !== '') setActive(true)
+                        else setActive(false)}}
+                        active={active}
                     label='password'
                 />
                 <Input
                     type='text'
                     value={repeatPassword}
                     name='repeatPassword'
-                    onChange={(e)=> setRepeatPassword(e.target.value)}
+                    onChange={(e)=> {setRepeatPassword(e.target.value)
+                        if (e.target.value !== '') setActive(true)
+                        else setActive(false)}}
+                        active={active}
                     label='repeatPassword'
                 />
                 <Input
                     type='role'
                     value={role}
                     name='role'
-                    onChange={(e)=> setRole(e.target.value)}
+                    onChange={(e)=> {setRole(e.target.value)
+                        if (e.target.value !== '') setActive(true)
+                        else setActive(false)}}
+                        active={active}
                     label='role'
                 />
                 <div>
+                    <Button 
+                        name={loading? 'loading..':'register'}
+                        disabled={loading}
+                    />
+                    
                     <span className='text-link' onClick={move}>Already registered? Login!</span>
-                    <button disabled={loading}>registrarme </button>
                 </div>
                
             </form>

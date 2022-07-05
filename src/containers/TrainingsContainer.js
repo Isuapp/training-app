@@ -2,6 +2,8 @@ import ListTrainings from "../components/ListTrainings/ListTrainings";
 import useTrainings from "../hooks/useTrainings";
 import { muscles, typologies} from '../utils/variables'
 import InputTag from "../components/InputTag/InputTag";
+import Modal from "../components/modal/Modal";
+import { useModal } from "../context/modalContext";
 
 const Trainings = ()=>{
     
@@ -16,6 +18,7 @@ const Trainings = ()=>{
         = useTrainings();
 
     
+  const [modal]=useModal();
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
     
@@ -59,6 +62,7 @@ const Trainings = ()=>{
             </div>
             <button>filter</button>
             </form>
+        {modal && <Modal>{modal}</Modal>}
         </main>
     )
 }

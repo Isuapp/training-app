@@ -1,10 +1,9 @@
 import './input.css';
 
-const Input =({className,label,name,type,value,onChange,placeholder,error})=>{
+const Input =({active,label,name,type,value,onChange,placeholder,error})=>{
 
     return(
-        <div className={className}>
-            <label>{label}</label>
+        <div className='float-input'>
             <input 
                 name={name}
                 type={type}
@@ -12,6 +11,7 @@ const Input =({className,label,name,type,value,onChange,placeholder,error})=>{
                 onChange={onChange}
                 placeholder={placeholder}
             />
+            <label className={active? 'active-label': null}>{label}</label>
             <p>{error}</p>
         </div>
     )

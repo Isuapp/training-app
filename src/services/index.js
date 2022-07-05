@@ -9,7 +9,7 @@ export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
       });
 
     const body = await res.json();
-    console.log('BODY', body)
+    
     if(!res.ok) throw new Error(body.message);
 
     return body.data.trainings;
@@ -87,15 +87,16 @@ console.log(like, auth);
 }
 
 export const deleteTrainingServices = async (idTraining,admin)=>{
-
+    console.log('idtrainig delete', idTraining, 'url', )
+    console.log(`${url}trainings/${idTraining}`)
     const res = await fetch(`${url}trainings/${idTraining}`,{
       method:'DELETE',
       headers:{
-        'content-type':'application/json',
         Authorization: admin,
       }
     })
     const body = await res.json();
+    console.log('body delete', body);
     if(!res.ok) throw new Error(body.message);
     console.log('Borrado con éxito');
   }

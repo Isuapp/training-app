@@ -4,9 +4,17 @@ import { muscles, typologies} from '../utils/variables'
 import InputTag from "../components/InputTag/InputTag";
 import Modal from "../components/modal/Modal";
 import { useModal } from "../context/modalContext";
+import { useAdmin } from '../context/adminContext';
+import { deleteTrainingServices } from '../services';
+import { useEffect, useState } from "react";
 
 const Trainings = ()=>{
     
+    const [admin] = useAdmin();
+    const [update, setUpdate] = useState(true);
+
+
+    useEffect(()=>{ },[update])
     const {
         typology, 
         muscleGroup, 
@@ -18,15 +26,31 @@ const Trainings = ()=>{
         = useTrainings();
 
     
-  const [modal]=useModal();
+    const [modal]=useModal();
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
     
+
+    const hanldeDeleteTraining = async (e)=>{
+        const li = e.target.closest('li');
+
+        const idTraining = li.getAttribute('data-id');
+
+      try {
+        await deleteTrainingServices(idTraining, admin);
+        setUpdate(!false)
+      } catch (error) {
+        console.error(error);
+      }
+
+    }
   
- 
     return(
         <main>
-            <ListTrainings  trainings={trainings}/>
+            <ListTrainings  
+                trainings={trainings}
+                handleTrash={hanldeDeleteTraining}
+            />
             <form className='filter-form' >
             <div>
                 <h4>Muscle Group</h4>

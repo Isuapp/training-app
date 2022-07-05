@@ -1,28 +1,16 @@
-import { useAdmin } from '../../context/adminContext';
-import { deleteTrainingServices } from '../../services';
+
 import TrainingMiniCard from '../trainingsMiniCard/TraininingMiniCard';
 import './listTrainings.css';
 
-const ListTrainings = ( { trainings }) => {
-
-    const [admin] = useAdmin();
-
-    const handleDeleteTraining = async (idTraining)=>{
-
-      try {
-        await deleteTrainingServices(idTraining, admin)
-      } catch (error) {
-        console.error(error)
-      }
-    }
+const ListTrainings = ( { trainings, handleTrash }) => {
 
     return trainings.length ? (
       <ul>
           {trainings.map((training)=>(
-            <li key={training.id}>
+            <li key={training.id} data-id={training.id}>
                   <TrainingMiniCard 
                     training={training}
-                    trash={()=>{handleDeleteTraining(training.id)}}
+                    handleTrash={handleTrash}
                   />
             </li>
           ))}

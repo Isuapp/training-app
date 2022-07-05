@@ -28,3 +28,6 @@ p.text-link{
   padding:.2rem;
   cursor: pointer;
 }
+main.main-app{
+  padding:0 0 8rem 0;
+}

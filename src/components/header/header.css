@@ -3,6 +3,7 @@ header{
     width: 100%;
     padding:1rem 1.5rem;
     position: fixed;
+    margin-top:2rem;
     bottom: 0;
 }
 

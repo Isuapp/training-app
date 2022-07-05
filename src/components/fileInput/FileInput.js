@@ -3,7 +3,7 @@ import './fileInput.css';
 const FileInput = ({className, image, src, children, onChange})=>{
 
     return(
-        <div className={className}>
+        <div className='fileInput-wraper'>
             <input
                 type='file'
                 name='image-input'

@@ -27,6 +27,7 @@ function App() {
   return (
     <div className="app">
      <Header/>
+     <main className='main-app'>
       <Routes>
         <Route path='/' element={<LandingContainer />}/>
         {/* <Route path='/home' element={<Home />}/> */}
@@ -41,6 +42,8 @@ function App() {
         <Route path='/trainings?:by=:key' element={<FiltersContainer />}/>
         <Route path='*' element={<NotFoundContainer />}/>
       </Routes>
+
+     </main>
     </div>
   );
 }

@@ -2,11 +2,15 @@ import './editTraining.css';
 
 import Input from '../input/Input';
 import FileInput from '../fileInput/FileInput.js'; 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { typologies, muscles } from '../../utils/variables';
 import { useAdmin } from '../../context/adminContext';
 import { editTrainingService } from '../../services';
 import { useNavigate, useParams } from 'react-router-dom';
+import useTraining from '../../hooks/useTraining';
+import { url } from '../../utils/variables';
+import Button from '../button/Button';
+import { useHandler} from '../../context/HandlerContext';
 
 
 const EditTrainig = ()=>{
@@ -14,6 +18,8 @@ const EditTrainig = ()=>{
 
     const navigate = useNavigate()
 
+    const {training} = useTraining(id);
+    
     const [admin] = useAdmin();    
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -24,6 +30,8 @@ const EditTrainig = ()=>{
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [handler, setHandler] = useHandler();
+    setHandler(true);
 
     const handleEdit = async (e)=>{
         e.preventDefault()
@@ -48,19 +56,20 @@ const EditTrainig = ()=>{
         }
     }
 
+    
     return(
-        <main>
+        <section className='edit-wraper'>
         <h2>Edit Training</h2>
         <form onSubmit={handleEdit}>
             <Input
-                label='name'
+                label={training.name}
                 type='text'
                 name='name'
                 value={name}
                 onChange={(e)=>setName(e.target.value)}
             />
             <Input
-                label='description'
+                label={training.description}
                 type='text'
                 name='description'
                 value={description}
@@ -82,25 +91,28 @@ const EditTrainig = ()=>{
                 }
             </select>
             <FileInput
-                className='fileInput-wraper'
                 onChange={(e)=>{ setImages(e.target.files[0])}}
             >
                 {images ? 
                 <figure>
-                    <p>Preview</p>
-                    <img src={URL.createObjectURL(images)} alt='image preview'/>
+                    <p>New image</p>
+                    <img src={URL.createObjectURL(images)} alt='image-preview'/>
                 </figure>
-                : null
+                : 
+                <figure>
+                    <p>CURRENT IMAGE</p>
+                    <img src={`${url}${training.image}`} alt='current-image'/>
+                </figure>
                 }
             </FileInput>
-            <button disabled={loading}>
-                {loading && 'LOADING'}
-                {!loading && 'UPDATE TRAINING'}
-            </button>
+            <Button 
+                disabled={loading}
+                name={loading? 'loading..': 'update training'}
+            />
         </form>
         {error && <p className='error'>{error}</p>}
         {success && <p className='success'>{success}</p>}
-    </main>
+    </section>
     )
 }
 

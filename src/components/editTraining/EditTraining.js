@@ -1,4 +1,3 @@
-import './editTraining.css';
 
 import Input from '../input/Input';
 import FileInput from '../fileInput/FileInput.js'; 
@@ -58,7 +57,7 @@ const EditTrainig = ()=>{
 
     
     return(
-        <section className='edit-wraper'>
+        <section className='form-wraper'>
         <h2>Edit Training</h2>
         <form onSubmit={handleEdit}>
             <Input

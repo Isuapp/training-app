@@ -1,3 +1,4 @@
+
 import jwt from 'jwt-decode';
 
 import { addTrainingService } from "../../services";
@@ -8,6 +9,7 @@ import Input from "../input/Input";
 import FileInput from '../fileInput/FileInput';
 import { useAdmin } from '../../context/adminContext';
 import { useNavigate } from 'react-router-dom';
+import Button from '../button/Button';
 const AddTraining = ()=>{
 
     let navigate = useNavigate()
@@ -51,7 +53,7 @@ const AddTraining = ()=>{
 
 
     return(
-        <main>
+        <section className='form-wraper'>
         <h2>AddTrainig</h2>
         <form onSubmit={handleAddTraining}>
             <Input
@@ -95,14 +97,14 @@ const AddTraining = ()=>{
                 : null
                 }
             </FileInput>
-            <button disabled={loading}>
-                {loading && 'LOADING'}
-                {!loading && 'ADD TRAINING'}
-            </button>
+            <Button 
+                disabled={loading}
+                name={loading? 'loading..': 'add training'}
+            />
         </form>
         {error && <p className='error'>{error}</p>}
         {success && <p className='success'>{success}</p>}
-    </main>
+    </section>
     )
 }
 

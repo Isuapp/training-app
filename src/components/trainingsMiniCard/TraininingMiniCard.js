@@ -6,6 +6,7 @@ import trash from '../../assets/brand/icons/trash.svg'
 import edit from '../../assets/brand/icons/pencil.svg'
 
 import IconButton from '../iconButton/IconButton'
+import NavIcon from '../navIcon/NavIcon';
 import { Link } from 'react-router-dom';
 
 const TrainingMiniCard = ({ training, handleTrash })=>{
@@ -20,7 +21,10 @@ const TrainingMiniCard = ({ training, handleTrash })=>{
             <p>{training.likes}</p>
             <div>
                 <IconButton icon={trash} onClick={handleTrash} />
-                <Link to={`/edit-training/${training.id}`}>edit</Link>
+                <NavIcon 
+                    to={`/edit-training/${training.id}`}
+                    icon={edit}
+                />
             </div>
         </article>
     )

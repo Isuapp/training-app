@@ -12,14 +12,14 @@ const useTraining = (idTraining)=>{
     const [admin] = useAdmin();
     const [user] = useUser();
 
-    const authorization = user? user : admin;
+    const tokenUser = user.token;
 
     useEffect(()=>{
         const loadTraining = async ()=>{
             try{
                 setLoading(true);
                 
-                const data = await getSingleTrainingsService(idTraining, authorization);
+                const data = await getSingleTrainingsService(idTraining, tokenUser);
 
                 setTraining(data);
         

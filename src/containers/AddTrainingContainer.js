@@ -1,13 +1,22 @@
 
 import AddTraining from '../components/addTraining/AddTraining';
-import {useHandler } from '../context/HandlerContext';
+import arrow from '../assets/brand/icons/arrow.svg';
+import IconButton from '../components/iconButton/IconButton';
+import { useNavigate } from 'react-router-dom';
+
 
 const AddTrainigContainer = ()=>{
 
-    const [, setHandler] = useHandler();
-    setHandler(true)
+    const navigate = useNavigate()
+    const back =()=>{
+        navigate('/');
+      }
+
     return(
-        <AddTraining/>
+        <>
+            <IconButton  onClick={back} icon={arrow}/>
+            <AddTraining/>
+        </>
     )
 }
 

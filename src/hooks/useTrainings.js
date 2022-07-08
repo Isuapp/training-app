@@ -32,7 +32,7 @@ const useTrainings =()=>{
         getAllTrainings();
     }, [typology, muscleGroup, setTypology, setMuscleGroup ])
 
-    return {typology, muscleGroup, setTypology ,setMuscleGroup , trainings,loading,error}
+    return {typology, muscleGroup, setTypology ,setMuscleGroup , trainings,setTrainings, loading,error}
 }
 
 export default useTrainings;

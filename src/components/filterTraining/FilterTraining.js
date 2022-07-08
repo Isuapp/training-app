@@ -1,31 +1,11 @@
 import './filterTraining.css';
 
-import { useParams } from "react-router-dom";
-import {useAdmin} from '../../context/adminContext'
-import {useUser} from '../../context/UserContext'
 import { muscles, typologies } from "../../utils/variables";
 
 
 import InputTag from '../InputTag/InputTag';
-import useTrainings from '../../hooks/useTrainings';
 
 const FilterTraining = ({onChangeMuscle, onChangeTypology})=>{
-
-
-    const {
-        typology, 
-        muscleGroup, 
-        setTypology, 
-        setMuscleGroup ,
-        trainings, 
-        loading, 
-        error} 
-        = useTrainings();    
-    
-    const [admin, setAdmin] = useAdmin();
-    const [ user, setUser] = useUser();
-
-   
 
     return(
         

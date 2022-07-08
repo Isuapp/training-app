@@ -7,13 +7,13 @@ import { useState } from "react";
 
 import Input from "../input/Input";
 import FileInput from '../fileInput/FileInput';
-import { useAdmin } from '../../context/adminContext';
 import { useNavigate } from 'react-router-dom';
 import Button from '../button/Button';
+import { useUser } from '../../context/UserContext';
 const AddTraining = ()=>{
 
     let navigate = useNavigate()
-    const [admin] = useAdmin();
+    const [user, setUser] = useUser();
 
     const [name, setName ] = useState('');
     const [typology, setTypology] = useState('');
@@ -31,8 +31,9 @@ const AddTraining = ()=>{
         
         try {
 
-            const user = jwt(admin);
             const idUser =  user.idUser;
+            const tokenUser = user.token;
+            console.log(`token user: ${tokenUser} and userId:${idUser}`)
             const data= new FormData();
 
             data.append('idUser', idUser);
@@ -41,8 +42,7 @@ const AddTraining = ()=>{
             data.append('typology', typology);
             data.append('muscleGroup', muscleGroup);
             data.append('image', images);
-            console.log(admin);
-            const training = await  addTrainingService({data, admin});
+            const training = await  addTrainingService({data, tokenUser});
             navigate('/trainings')
 
             setSuccess(true)

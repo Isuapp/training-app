@@ -15,12 +15,12 @@ export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
     return body.data.trainings;
 }
 
-export const getSingleTrainingsService = async (idTraining,authorization)=>{
+export const getSingleTrainingsService = async (idTraining,tokenUser)=>{
   
   
   const res = await fetch(`${url}trainings/${idTraining}`,{
         headers:{
-          Authorization: authorization,
+          Authorization: tokenUser,
         }
       });
 
@@ -86,13 +86,13 @@ console.log(like, auth);
   return body.data
 }
 
-export const deleteTrainingServices = async (idTraining,admin)=>{
+export const deleteTrainingServices = async (idTraining,tokenUser)=>{
     console.log('idtrainig delete', idTraining, 'url', )
     console.log(`${url}trainings/${idTraining}`)
     const res = await fetch(`${url}trainings/${idTraining}`,{
       method:'DELETE',
       headers:{
-        Authorization: admin,
+        Authorization: tokenUser,
       }
     })
     const body = await res.json();
@@ -102,12 +102,12 @@ export const deleteTrainingServices = async (idTraining,admin)=>{
   }
 
 
-  export const addTrainingService = async ({admin, data})=>{
+  export const addTrainingService = async ({tokenUser, data})=>{
 
     const res = await fetch(`${url}trainings/`,{
       method:'POST',
       headers:{
-        Authorization:admin,
+        Authorization:tokenUser,
       },
       body:data,
     });
@@ -119,12 +119,12 @@ export const deleteTrainingServices = async (idTraining,admin)=>{
     return body.data
   }
 
-export const editTrainingService = async ({id, admin, data})=>{
+export const editTrainingService = async ({id, tokenUser, data})=>{
 
   const res = await fetch(`${url}trainings/${id}`,{
     method:'PUT',
     headers:{
-      Authorization: admin,
+      Authorization: tokenUser,
     },
     body:data,
   });

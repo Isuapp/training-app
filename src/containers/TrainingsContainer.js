@@ -1,40 +1,15 @@
-import ListTrainings from "../components/ListTrainings/ListTrainings";
 import useTrainings from "../hooks/useTrainings";
-import { muscles, typologies} from '../utils/variables'
-import InputTag from "../components/InputTag/InputTag";
 import Modal from "../components/modal/Modal";
 import { useModal } from "../context/modalContext";
 import { useUser } from '../context/UserContext';
-import { deleteTrainingServices, getAllTrainingsService } from '../services';
-import { useEffect, useState } from "react";
+import { deleteTrainingServices } from '../services';
 import FilterTraining from "../components/filterTraining/FilterTraining";
 import TrainingMiniCard from "../components/trainingsMiniCard/TraininingMiniCard";
-import { useAdmin } from "../context/adminContext";
 
 const Trainings = ()=>{
     
     const [user] = useUser();
 
-    const [admin] = useAdmin();
-    const [update, setUpdate] = useState(true);
-    /* const [trainings, setTrainings] = useState([]); */
-
-
-    useEffect(()=>{ },[update])
-
-    const hanldeDeleteTraining = async (e)=>{
-        const li = e.target.closest('li');
-
-        const idTraining = li.getAttribute('data-id');
-
-      try {
-        await deleteTrainingServices(idTraining, admin);
-      } catch (error) {
-        console.error(error);
-      }
-
-    }
-  
     const {
         setMuscleGroup,
         setTypology,
@@ -42,6 +17,23 @@ const Trainings = ()=>{
         loading, 
         error} 
         = useTrainings();
+
+
+
+    const hanldeDeleteTraining = async (e)=>{
+        const li = e.target.closest('li');
+
+        const idTraining = li.getAttribute('data-id');
+        const tokenUser = user.token
+
+      try {
+        await deleteTrainingServices(idTraining, tokenUser);
+      } catch (error) {
+        console.error(error);
+      }
+
+    }
+  
 
     
     const [modal]=useModal();
@@ -67,6 +59,7 @@ const Trainings = ()=>{
                 <Modal>
                     <FilterTraining 
                         onChangeMuscle={(e)=>{setMuscleGroup(e.target.value)}}
+                        onChangeTypology={(e)=>{setTypology(e.target.value)}}
                     />
                 </Modal>}
         </main>

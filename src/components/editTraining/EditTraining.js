@@ -3,13 +3,13 @@ import Input from '../input/Input';
 import FileInput from '../fileInput/FileInput.js'; 
 import { useEffect, useState } from 'react';
 import { typologies, muscles } from '../../utils/variables';
-import { useAdmin } from '../../context/adminContext';
 import { editTrainingService } from '../../services';
 import { useNavigate, useParams } from 'react-router-dom';
 import useTraining from '../../hooks/useTraining';
 import { url } from '../../utils/variables';
 import Button from '../button/Button';
 import { useHandler} from '../../context/HandlerContext';
+import { useUser } from '../../context/UserContext';
 
 
 const EditTrainig = ()=>{
@@ -18,8 +18,8 @@ const EditTrainig = ()=>{
     const navigate = useNavigate()
 
     const {training} = useTraining(id);
+    const [user, setUser] = useUser();
     
-    const [admin] = useAdmin();    
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [typology, setTypology] = useState('');
@@ -37,6 +37,7 @@ const EditTrainig = ()=>{
         try {
             setLoading(true);
 
+            const tokenUser = user.token;
             const data = new FormData();
             data.append('name', name);
             data.append('description', description);
@@ -44,7 +45,7 @@ const EditTrainig = ()=>{
             data.append('muscleGroup', muscleGroup);
             data.append('image', images);
             
-            await editTrainingService({id, admin, data})
+            await editTrainingService({id, tokenUser, data})
             navigate('/trainings');
             setSuccess(true);
 

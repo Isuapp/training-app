@@ -1,10 +1,10 @@
 import { url } from "../utils/variables"
 
-export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
+export const getAllTrainingsService = async ( typology ,muscleGroup ,tokenUser)=>{
 
   const res = await fetch(`${url}trainings?typology=${typology}&muscleGroup=${muscleGroup}`,{
         headers:{
-          Authorization: auth,
+          Authorization: tokenUser,
         }
       });
 

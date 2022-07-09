@@ -41,7 +41,6 @@ const Header = () => {
         {user&& <IconButton onClick={search} icon={searchIcon}/> }
         {user&&user.roleUser==='user'&& <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={filtersIcon}/> }
         {user&&user.roleUser==='admin'&& <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={filtersIcon}/> }
-        
       </nav>
     </header>
   )

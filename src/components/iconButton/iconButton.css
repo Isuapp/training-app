@@ -13,3 +13,6 @@ div.icon-button> img{
 width: 1.8rem;
 height: 1.8rem;
 }
+ul>li> article.training-user>div>div.icon-button{
+    background-color: transparent;
+}

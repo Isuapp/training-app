@@ -25,8 +25,10 @@ const HeaderUp = ()=>{
 
     return(
         <header className='header-up'>
-            <IconButton  onClick={back} icon={arrowIcon} className='icon-header-up'/>
-            <IconButton onClick={logout}icon={userIcon} className='icon-header-up'/>
+          <nav>
+            {user&&<IconButton  onClick={back} icon={arrowIcon} className='icon-header-up'/>}
+            {user&&<IconButton onClick={logout}icon={userIcon} className='icon-header-up'/>}
+          </nav>
         </header>
     )
 }

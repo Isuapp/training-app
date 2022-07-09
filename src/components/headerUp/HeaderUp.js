@@ -20,14 +20,14 @@ const HeaderUp = ()=>{
       }
     
       const back =()=>{
-        navigate('/');
+        navigate(-1);
       }
 
     return(
-        <>
+        <header className='header-up'>
             <IconButton  onClick={back} icon={arrowIcon} className='icon-header-up'/>
             <IconButton onClick={logout}icon={userIcon} className='icon-header-up'/>
-        </>
+        </header>
     )
 }
 

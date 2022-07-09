@@ -1,5 +1,7 @@
-
-.icon-header-up{
-    position:fixed;
-    border: 1px solid red;
+header.header-up{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:1rem 2rem;
 }

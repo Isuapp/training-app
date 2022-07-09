@@ -5,7 +5,6 @@ import { useUser } from '../context/UserContext';
 import { deleteTrainingServices } from '../services';
 import FilterTraining from "../components/filterTraining/FilterTraining";
 import TrainingMiniCard from "../components/trainingsMiniCard/TraininingMiniCard";
-import { useState } from "react";
 
 const Trainings = ()=>{
     

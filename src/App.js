@@ -18,6 +18,7 @@ import { useModal } from './context/modalContext';
 import { useUser } from './context/UserContext';
 import { useAdmin } from './context/adminContext';
 import FilterTraining from './components/filterTraining/FilterTraining';
+import HeaderUp from './components/headerUp/HeaderUp';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
   const [modal]=useModal();
   return (
     <div className="app">
+      <HeaderUp />
      <Header/>
      <main className='main-app'>
       <Routes>

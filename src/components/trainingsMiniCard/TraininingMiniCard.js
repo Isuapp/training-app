@@ -10,25 +10,18 @@ import IconButton from '../iconButton/IconButton'
 import NavIcon from '../navIcon/NavIcon';
 import { Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import { likesService } from '../../services';
+import { useEffect } from 'react';
 
 
-const TrainingMiniCard = ({ training, handleTrash })=>{
+const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
 
     const [user] = useUser();
     const role = user.roleUser;
     
 
-    const handleLikes =async (idTraining)=>{
-        try {
-            const tokenUser = user.token;
-          
-            await likesService(idTraining, tokenUser)
-          
-        } catch (error) {
-          console.error(error)
-        }
-      }
+  
+
+      useEffect(()=>{},[handleLikes])
 
     if(role==='user') return(
         <article className='training-user'>
@@ -45,7 +38,7 @@ const TrainingMiniCard = ({ training, handleTrash })=>{
             </div>
             <div>
                 <p>{training.likes}</p>
-                <IconButton icon={heart} onClick={()=>{handleLikes(training.id)}} />   
+                <IconButton icon={heart} onClick={handleLikes} />   
             </div>
         </article>
     )

@@ -5,6 +5,7 @@ import { useUser } from '../context/UserContext';
 import { deleteTrainingServices } from '../services';
 import FilterTraining from "../components/filterTraining/FilterTraining";
 import TrainingMiniCard from "../components/trainingsMiniCard/TraininingMiniCard";
+import { useState } from "react";
 
 const Trainings = ()=>{
     
@@ -14,11 +15,10 @@ const Trainings = ()=>{
         setMuscleGroup,
         setTypology,
         trainings, 
+        setTrainings,
         loading, 
         error} 
         = useTrainings();
-
-
 
     const hanldeDeleteTraining = async (e)=>{
         const li = e.target.closest('li');
@@ -34,7 +34,6 @@ const Trainings = ()=>{
 
     }
   
-
     
     const [modal]=useModal();
 

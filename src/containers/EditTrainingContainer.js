@@ -3,6 +3,7 @@ import useTraining from "../hooks/useTraining";
 import EditTrainig from "../components/editTraining/EditTraining";
 import arrow from '../assets/brand/icons/arrow.svg';
 import IconButton from '../components/iconButton/IconButton';
+import HeaderUp from "../components/headerUp/HeaderUp";
 
 const EditTrainigContainer = ()=>{
 
@@ -16,7 +17,7 @@ const EditTrainigContainer = ()=>{
     
     return(
         <main>
-            <IconButton  onClick={back} icon={arrow}/>
+            <HeaderUp />
             <EditTrainig />
         </main>
     )

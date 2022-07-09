@@ -34,7 +34,7 @@ const Header = () => {
   }
 
   
-  return(
+  if(user)return(
     <header className='main-header'>
       <nav>
         {user&& <NavIcon to='/login' icon={homeIcon}/> }

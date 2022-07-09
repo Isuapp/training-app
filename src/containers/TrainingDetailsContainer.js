@@ -22,25 +22,11 @@ const TrainingDetails = ()=>{
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
 
-    const handleLikes =async (like)=>{
-        try {
 
-            const authorization = user? user : admin;
-            console.log(like, authorization);
-          
-            const data = await likesService(like, authorization)
-
-            console.log(data)
-          
-        } catch (error) {
-          console.error(error)
-        }
-      }
     return(
         <main>
            <Training 
                 training={training} 
-                likes={()=>{handleLikes(training.id)}}
            />
         </main>
     )

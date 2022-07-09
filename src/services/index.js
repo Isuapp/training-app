@@ -68,13 +68,12 @@ export const loginService = async ({email, password})=>{
   return body.data;
 }
 
-export const likesService = async (like, auth)=>{
-console.log(like, auth);
+export const likesService = async (like, tokenUser)=>{
 
   const res = await fetch(`${url}trainings/${like}/likes`,{
     method:'POST',
     headers:{
-      Authorization: auth,
+      Authorization: tokenUser,
     },
   });
 
@@ -135,18 +134,4 @@ export const editTrainingService = async ({id, tokenUser, data})=>{
 
   return body.data
 }
-/* 
-export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
 
-  const res = await fetch(`${url}trainings?typology=${typology}&muscleGroup=${muscleGroup}`,{
-        headers:{
-          Authorization: auth,
-        }
-      });
-
-    const body = await res.json();
-    
-    if(!res.ok) throw new Error(body.message);
-
-    return body.data.trainings;
-} */

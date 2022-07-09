@@ -5,7 +5,7 @@ ul > li{
     align-items: center;
     padding:1rem 0;
 }
-ul> li>article.training{
+ul> li>article.training-admin{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,16 +14,20 @@ ul> li>article.training{
     width:20rem;
     padding:.8rem;
 }
-ul> li>article.training:hover{
+ul> li>article.training-admin:hover,
+ul> li>article.training-user:hover
+{
     -webkit-box-shadow: 0px 0px 15px 0px #000000; 
     box-shadow: 0px 0px 15px 0px #000000;
     transform: scale(1.05);
 }
-ul> article.training> .link> h4{
+ul> article.training-admin> .link> h4,
+ul> article.training-user> .link> h4
+{
     text-transform: uppercase;
 }
-ul> li>article.training> .link,
-ul> li>article.training> div
+ul> li>article.training-admin> .link,
+ul> li>article.training-admin> div
 {
     text-decoration: none;
     color:var(--darkestColor);
@@ -32,17 +36,58 @@ ul> li>article.training> div
     text-transform: uppercase;
     gap:1rem;
 }
-ul> li>article.training> .link> figure{
+ul> li>article.training-admin> .link> figure{
     width:3rem;
     height: 3rem;
     border-radius: 50%;
     overflow: hidden;
 }
-ul>li> article.training> .link> figure> img{
+ul>li> article.training-admin> .link> figure> img,
+ul>li> article.training-user> .link> figure> img
+{
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
 li{
     list-style: none;
+}
+
+/* 
+-------------------------------
+USER STYLES
+-------------------------------
+*/
+
+ul>li>article.training-user{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    border-radius: 2px;
+    background-color: var(--mainColor);
+    width:20rem;
+}
+ul>li> article.training.user> .link> figure>{
+    width: 20rem;
+}   
+ul>li> article.training-user> .link{
+    flex-basis:100%;
+}
+
+ul>li> article.training-user> div> h4:nth-child(1),
+ul>li> article.training-user> div> h4:nth-child(3){
+    color:var(--darkColor)
+}
+ul>li> article.training-user> div> h4:nth-child(2){
+    margin:0 0 1rem 0;
+}
+ul>li> article.training-user> div> h4:nth-child(2),
+ul>li> article.training-user> div> h4:nth-child(4)
+{
+    color:var(--darkestColor);
+    text-transform: uppercase;
+}
+ul>li> article.training-user> div:nth-child(2){
+    flex-basis:80%;
+    padding:1rem;
 }

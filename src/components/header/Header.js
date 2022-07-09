@@ -38,7 +38,7 @@ const Header = () => {
   }
 
   return(
-    <header>
+    <header className='main-header'>
       <nav>
         {user&& <IconButton onClick={logout} icon={signout}/> }
         {user&& <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={search}/> }

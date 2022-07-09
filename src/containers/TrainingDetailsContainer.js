@@ -7,7 +7,6 @@ import Training from "../components/training/Training";
 import { likesService } from "../services";
 import { useAdmin } from "../context/adminContext";
 import { useUser } from "../context/UserContext";
-import HeaderUp from "../components/headerUp/HeaderUp";
 
 const TrainingDetails = ()=>{
     const {id} = useParams();
@@ -39,7 +38,6 @@ const TrainingDetails = ()=>{
       }
     return(
         <main>
-          <HeaderUp />
            <Training 
                 training={training} 
                 likes={()=>{handleLikes(training.id)}}

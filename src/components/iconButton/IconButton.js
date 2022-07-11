@@ -1,11 +1,14 @@
 import './iconButton.css';
 
 
-const IconButton = ({icon, onClick})=>{
+const IconButton = ({icon, onClick, name})=>{
 
     return(
         <div className='icon-button' onClick={onClick}>
-            <img src={icon} />
+            <figure>
+                <img src={icon} />
+            </figure>
+            <p>{name}</p>
         </div>
     )
 }

@@ -16,7 +16,7 @@ const useTrainings =()=>{
     
     
     useEffect(()=>{
-        const getAllTrainings = async  (trainings)=>{
+        const getAllTrainings = async  ()=>{
             try{
                 setLoading(true);
                 const data = await getAllTrainingsService(typology, muscleGroup, user.token);

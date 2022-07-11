@@ -5,7 +5,7 @@ import './listTrainings.css';
 const ListTrainings = ( { trainings, handleTrash }) => {
 
     return trainings.length ? (
-      <ul>
+      <ul className='trainings-list'>
           {trainings.map((training)=>(
             <li key={training.id} data-id={training.id}>
                   <TrainingMiniCard 

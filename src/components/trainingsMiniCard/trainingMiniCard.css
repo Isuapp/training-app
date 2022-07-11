@@ -1,4 +1,4 @@
-ul > li{
+ul{
     display: flex;
     flex-direction: column;
     gap:1rem;
@@ -10,16 +10,16 @@ ul> li>article.training-admin{
     justify-content: space-between;
     align-items: center;
     border-radius: 2px;
-    background-color: var(--mainColor);
+    background-color: var(--white);
     width:20rem;
     padding:.8rem;
 }
 ul> li>article.training-admin:hover,
 ul> li>article.training-user:hover
 {
-    -webkit-box-shadow: 0px 0px 15px 0px #000000; 
-    box-shadow: 0px 0px 15px 0px #000000;
-    transform: scale(1.05);
+    -webkit-box-shadow: 0px 0px 10px 0px #0000005d; 
+    box-shadow: 0px 0px 10px 0px #0000005d;
+    transform: scale(1.005);
 }
 ul> article.training-admin> .link> h4,
 ul> article.training-user> .link> h4
@@ -64,7 +64,7 @@ ul>li>article.training-user{
     flex-wrap: wrap;
     align-items: flex-end;
     border-radius: 2px;
-    background-color: var(--mainColor);
+    background-color: var(--white);
     width:20rem;
 }
 ul>li> article.training.user> .link> figure>{
@@ -90,4 +90,19 @@ ul>li> article.training-user> div> h4:nth-child(4)
 ul>li> article.training-user> div:nth-child(2){
     flex-basis:80%;
     padding:1rem;
+}
+
+@media (min-width: 1024px){
+
+    ul{
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 3rem;
+        align-items: center;
+        justify-content: center;
+        gap:3rem;
+    }
+    ul>li{
+        gap:2rem;
+    }
 }

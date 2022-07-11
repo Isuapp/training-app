@@ -1,4 +1,16 @@
-.navLink,
+.navLink{
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    gap:.5rem;
+    align-items: center;
+    justify-content: center;
+}
+.navLink> p{
+    color: var(--darkestColor);
+    text-decoration: none;
+}
 .navLink> figure
 {
     cursor: pointer;
@@ -13,4 +25,24 @@
 .navLink> figure> img{
     width: 1.8rem;
     height: 1.8rem;
+}
+
+@media (min-width: 1024px){
+    header.main-header>nav>.navLink{
+        border-radius: 2px;
+    }
+    header.main-header>nav>.navLink> figure{
+        background-color: transparent;
+    }
+    header.main-header>nav>.navLink{
+        flex-direction: row;
+        padding:0 1rem;
+    }
+
+    header.main-header>nav>.navLink{
+        width: auto;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
 }

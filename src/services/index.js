@@ -86,8 +86,6 @@ export const likesService = async (like, tokenUser)=>{
 }
 
 export const deleteTrainingServices = async (idTraining,tokenUser)=>{
-    console.log('idtrainig delete', idTraining, 'url', )
-    console.log(`${url}trainings/${idTraining}`)
     const res = await fetch(`${url}trainings/${idTraining}`,{
       method:'DELETE',
       headers:{
@@ -95,7 +93,6 @@ export const deleteTrainingServices = async (idTraining,tokenUser)=>{
       }
     })
     const body = await res.json();
-    console.log('body delete', body);
     if(!res.ok) throw new Error(body.message);
     console.log('Borrado con éxito');
   }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './navIcon.css';
 
-const NavIcon = ({to, icon})=>{
+const NavIcon = ({to, icon, name})=>{
 
     return(
         
@@ -9,6 +9,7 @@ const NavIcon = ({to, icon})=>{
             <figure>
                 <img src={icon} />
             </figure>
+            <p>{name}</p>
         </Link>
     )
 }

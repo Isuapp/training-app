@@ -3,28 +3,19 @@ import { Route, Routes} from 'react-router-dom';
 
 import Header from './components/header/Header';
 import LandingContainer from './containers/LandingContainer';
-import HomeContainer from './containers/HomeContainer';
-import FiltersContainer from './containers/FiltersContainer';
 import EditTrainingContainer from './containers/EditTrainingContainer';
 import AddTrainigContainer from './containers/AddTrainingContainer';
 import LoginContainer from './components/login/LoginContainer';
 import RegisterContainer from './components/register/RegisterContainer';
 import TrainingDetailsContainer from './containers/TrainingDetailsContainer';
-import Modal from './components/modal/Modal';
 import TrainingsContainer from './containers/TrainingsContainer';
 import NotFoundContainer from './containers/NotFoundContainer';
 
-import { useModal } from './context/modalContext';
-import { useUser } from './context/UserContext';
-import { useAdmin } from './context/adminContext';
 import FilterTraining from './components/filterTraining/FilterTraining';
 import HeaderUp from './components/headerUp/HeaderUp';
 
 function App() {
 
-  const [user]=useUser();
-  const [admin]=useAdmin();
-  const [modal]=useModal();
   return (
     <div className="app">
       <HeaderUp />
@@ -40,8 +31,6 @@ function App() {
         <Route path='/add-training' element={<AddTrainigContainer />}/>
         <Route path='/edit-training/:id' element={<EditTrainingContainer />}/>
         <Route path='/filter' element={<FilterTraining />}/>
-        
-        <Route path='/trainings?:by=:key' element={<FiltersContainer />}/>
         <Route path='*' element={<NotFoundContainer />}/>
       </Routes>
 

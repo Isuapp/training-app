@@ -1,14 +1,13 @@
 
 import Input from '../input/Input';
 import FileInput from '../fileInput/FileInput.js';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { typologies, muscles } from '../../utils/variables';
 import { editTrainingService } from '../../services';
 import { useNavigate, useParams } from 'react-router-dom';
 import useTraining from '../../hooks/useTraining';
 import { url } from '../../utils/variables';
 import Button from '../button/Button';
-import { useHandler} from '../../context/HandlerContext';
 import { useUser } from '../../context/UserContext';
 
 
@@ -30,8 +29,6 @@ const EditTrainig = ()=>{
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [handler, setHandler] = useHandler();
-    setHandler(true);
 
     const handleEdit = async (e)=>{
         e.preventDefault()

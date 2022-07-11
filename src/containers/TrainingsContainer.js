@@ -2,28 +2,29 @@ import useTrainings from "../hooks/useTrainings";
 import Modal from "../components/modal/Modal";
 import { useModal } from "../context/modalContext";
 import { useUser } from '../context/UserContext';
-import { deleteTrainingServices, getAllTrainingsService } from '../services';
+import { deleteTrainingServices, likesService } from '../services';
 import FilterTraining from "../components/filterTraining/FilterTraining";
 import TrainingMiniCard from "../components/trainingsMiniCard/TraininingMiniCard";
-import{ useState} from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Trainings = ()=>{
 
-    const [user] = useUser();
-
+    const navigate = useNavigate()
     const {
         setMuscleGroup,
         setTypology,
         trainings,
+        setTrainings,
         loading,
         error}
         = useTrainings();
 
+    const [user] = useUser();
 
-    const hanldeDeleteTraining = async (e)=>{
-        const li = e.target.closest('li');
 
-        const idTraining = li.getAttribute('data-id');
+    const hanldeDeleteTraining = async (idTraining)=>{
+
         const tokenUser = user.token
 
         try {
@@ -34,8 +35,22 @@ const Trainings = ()=>{
         }
 
     }
+    const handleLikes =async (idTraining)=>{
+        try {
+
+            const tokenUser = user.token;
+
+            const data = await likesService(idTraining, tokenUser)
+
+            console.log(data)
+
+        } catch (error) {
+          console.error(error)
+        }
+      }
 
     const [modal]=useModal();
+
 
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
@@ -45,12 +60,13 @@ const Trainings = ()=>{
         <main>
             <ul>
                 {trainings.map((training)=>(
-                    <li key={training.id} data-id={training.id}>
-                        <TrainingMiniCard
-                            training={training}
-                            handleTrash={hanldeDeleteTraining}
-                        />
-                    </li>
+                <li key={training.id} data-id={training.id}>
+                    <TrainingMiniCard
+                        training={training}
+                        handleTrash={()=>{hanldeDeleteTraining(training.id)}}
+                        handleLikes={()=>{handleLikes(training.id)}}
+                    />
+                </li>
                 ))}
             </ul>
 

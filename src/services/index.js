@@ -1,6 +1,5 @@
 import { url } from "../utils/variables"
 
-
 export const getAllTrainingsService = async ( typology ,muscleGroup ,tokenUser)=>{
 
   const res = await fetch(`${url}trainings?typology=${typology}&muscleGroup=${muscleGroup}`,{
@@ -68,13 +67,12 @@ export const loginService = async ({email, password})=>{
   return body.data;
 }
 
-export const likesService = async (like, auth)=>{
-console.log(like, auth);
+export const likesService = async (like, tokenUser)=>{
 
   const res = await fetch(`${url}trainings/${like}/likes`,{
     method:'POST',
     headers:{
-      Authorization: auth,
+      Authorization: tokenUser,
     },
   });
 

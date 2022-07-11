@@ -1,25 +1,23 @@
 import './header.css';
 
 import { useUser} from "../../context/UserContext"
-import { useHandler } from '../../context/HandlerContext';
 import { useModal } from '../../context/modalContext';
-import { useAdmin } from '../../context/adminContext';
 
 
 import NavIcon from '../navIcon/NavIcon';
 import {useNavigate } from 'react-router-dom';
 
-import add from '../../assets/brand/icons/gym.svg'
+import searchIcon from '../../assets/brand/icons/search.svg'
+import filtersIcon from '../../assets/brand/icons/filters.svg';
+import addIcon from '../../assets/brand/icons/gym.svg';
+
 import IconButton from '../iconButton/IconButton';
-import signout from '../../assets/brand/icons/sign-out-alt.svg';
-import search from '../../assets/brand/icons/search.svg'
+import homeIcon from '../../assets/brand/icons/home.svg';
 import FilterTraining from '../filterTraining/FilterTraining';
 
 
 const Header = () => {
   const [user,setUser] = useUser();
-  const [handler, setHandler] = useHandler();
-  const [admin, setAdmin] = useAdmin();
   const [,setModal] = useModal();
   
   const navigate = useNavigate();
@@ -31,18 +29,19 @@ const Header = () => {
       navigate('/login')
     }
   }
-
-  const back =()=>{
-    navigate('/');
-    setHandler(false)
+  
+  const search=()=>{
+    console.log('Search');
   }
 
-  return(
-    <header>
+  
+  if(user)return(
+    <header className='main-header'>
       <nav>
-        {user&& <IconButton onClick={logout} icon={signout}/> }
-        {user&& <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={search}/> }
-        {user&& <NavIcon to='/add-training' icon={add} />}
+        {user&& <NavIcon to='/login' icon={homeIcon}/> }
+        {user&& <IconButton onClick={search} icon={searchIcon}/> }
+        {user&&user.roleUser==='user'&& <IconButton onClick={()=>{setModal(<FilterTraining />)}} icon={filtersIcon}/>}
+        {user&&user.roleUser==='admin'&& <NavIcon to='/add-training' icon={addIcon}/> }
       </nav>
     </header>
   )

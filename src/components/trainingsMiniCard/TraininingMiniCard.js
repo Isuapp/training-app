@@ -10,13 +10,17 @@ import IconButton from '../iconButton/IconButton'
 import NavIcon from '../navIcon/NavIcon';
 import { Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
+import { useEffect } from 'react';
 
 
-const TrainingMiniCard = ({ training, handleTrash })=>{
+const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
 
     const [user] = useUser();
     const role = user.roleUser;
     
+
+  
+
 
     if(role==='user') return(
         <article className='training-user'>
@@ -32,7 +36,8 @@ const TrainingMiniCard = ({ training, handleTrash })=>{
                 <h4>{training.muscleGroup}</h4>
             </div>
             <div>
-                <IconButton icon={heart} onClick={handleTrash} />   
+                <p>{training.likes}</p>
+                <IconButton icon={heart} onClick={handleLikes} />   
             </div>
         </article>
     )

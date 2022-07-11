@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
-import { HandlerProvider } from './context/HandlerContext';
 import { AdminProvider } from './context/adminContext';
 import { ModalProvider } from './context/modalContext';
 
@@ -14,13 +13,11 @@ root.render(
   <React.StrictMode>
     <ModalProvider>
       <AdminProvider>
-        <HandlerProvider>
           <UserProvider>
             <BrowserRouter>
               <App />
             </BrowserRouter>
           </UserProvider>
-        </HandlerProvider>
       </AdminProvider>
     </ModalProvider>
   </React.StrictMode>

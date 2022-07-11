@@ -4,9 +4,8 @@ div.float-input{
     flex-direction: column;
     min-width: 15rem;
 }
-div.float-input> input{
+div.float-input> textarea{
     width: 100%;
-    height: 56px;
     padding: 14px 16px 0 10px;
     outline: 0;
     border: none;

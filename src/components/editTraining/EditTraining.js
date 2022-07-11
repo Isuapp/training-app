@@ -9,6 +9,7 @@ import useTraining from '../../hooks/useTraining';
 import { url } from '../../utils/variables';
 import Button from '../button/Button';
 import { useUser } from '../../context/UserContext';
+import TextArea from '../textarea/TextArea';
 
 
 const EditTrainig = ()=>{
@@ -66,11 +67,12 @@ const EditTrainig = ()=>{
                 value={name}
                 onChange={(e)=>setName(e.target.value)}
             />
-            <Input
-                label={training.description}
+            <TextArea
+                label=''
                 type='text'
                 name='description'
                 value={description}
+                placeholder={training.description}
                 onChange={(e)=>setDescription(e.target.value)}
             />
             <select name='typologies' onChange={(e)=>setTypology(e.target.value)}>

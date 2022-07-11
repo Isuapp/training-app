@@ -4,6 +4,10 @@
   box-sizing: border-box;
   font-size: 16px;
 }
+body{
+
+  background-color: var(--mainColor);
+}
 :root{
   --sucess:green;
   --error:red;
@@ -30,6 +34,7 @@ p.text-link{
 }
 main.main-app{
   padding:0 0 8rem 0;
+  background-color: var(--mainColorx);
 }
 
 section.form-wraper{
@@ -37,7 +42,7 @@ section.form-wraper{
 }
 
 section.form-wraper form{
-  background-color: var(--darkColor);
+  background-color: var(--white);
   padding:3rem 1rem;
 }
 

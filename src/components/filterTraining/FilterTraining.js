@@ -5,11 +5,11 @@ import { muscles, typologies } from "../../utils/variables";
 
 import InputTag from '../InputTag/InputTag';
 
-const FilterTraining = ({onChangeMuscle, onChangeTypology})=>{
+const FilterTraining = ({onChangeMuscle, onChangeTypology, handleFilter})=>{
 
     return(
         
-        <form className='filter-form' >
+        <form className='filter-form' onSubmit={handleFilter}>
         <div>
             <h4>Muscle Group</h4>
             <div>
@@ -24,6 +24,13 @@ const FilterTraining = ({onChangeMuscle, onChangeTypology})=>{
                     />
                     )
                 })}
+       {/*               <select name='MuscleGroup' onChange={onChangeMuscle}>
+                {
+                    muscles.map(muscle=>(
+                        <option key={muscle.id} value={muscle.name} >{muscle.name}</option>
+                    ))
+                }
+            </select> */}
                 
             </div>
         </div>
@@ -41,6 +48,14 @@ const FilterTraining = ({onChangeMuscle, onChangeTypology})=>{
                     />
                 )
             })}
+
+            {/* <select name='typologies' onChange={onChangeTypology}>
+                {
+                    typologies.map(type=>(
+                        <option key={type.id} value={type.name} >{type.name}</option>
+                    ))
+                }
+            </select> */}
             </div>
         </div>
         <button>filter</button>

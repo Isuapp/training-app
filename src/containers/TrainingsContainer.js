@@ -6,11 +6,10 @@ import { deleteTrainingServices, likesService } from '../services';
 import FilterTraining from "../components/filterTraining/FilterTraining";
 import TrainingMiniCard from "../components/trainingsMiniCard/TraininingMiniCard";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import './trainingsContainer.css'
 
 const Trainings = ()=>{
-
-    const navigate = useNavigate()
+    
     const {
         setMuscleGroup,
         setTypology,
@@ -19,25 +18,27 @@ const Trainings = ()=>{
         loading,
         error}
         = useTrainings();
+    
+    const [newTypology, setNewTypology ] = useState('');
+    const [newMuscleGroup, setNewMuscleGroup] = useState('');
 
     const [user] = useUser();
 
+    const tokenUser = user.token
 
     const hanldeDeleteTraining = async (idTraining)=>{
-
-        const tokenUser = user.token
-
-        try {
-            await deleteTrainingServices(idTraining, tokenUser);
-            await getAllTrainingsService('','',tokenUser)
-        } catch (error) {
-        console.error(error);
+        if(window.confirm('You want to delete this training?' )){
+            try {
+                await deleteTrainingServices(idTraining, tokenUser);
+                setTrainings(trainings.filter((training)=> training.id!==idTraining))
+              } catch (error) {
+                console.error(error);
+              }
         }
-
     }
+
     const handleLikes =async (idTraining)=>{
         try {
-
             const tokenUser = user.token;
 
             const data = await likesService(idTraining, tokenUser)
@@ -48,16 +49,23 @@ const Trainings = ()=>{
           console.error(error)
         }
       }
-
+      
+    const handleFilter = async (e) =>{
+        e.preventDefault();
+        try{
+            setMuscleGroup(newMuscleGroup);
+            setTypology(newTypology);
+            
+        }catch(error){console.error(error)}
+    }
     const [modal]=useModal();
-
 
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
 
 
     return(
-        <main>
+        <section className="trainings">
             <ul>
                 {trainings.map((training)=>(
                 <li key={training.id} data-id={training.id}>
@@ -69,15 +77,15 @@ const Trainings = ()=>{
                 </li>
                 ))}
             </ul>
-
-            {modal &&
+            {modal && 
                 <Modal>
-                    <FilterTraining
-                        onChangeMuscle={(e)=>{setMuscleGroup(e.target.value)}}
-                        onChangeTypology={(e)=>{setTypology(e.target.value)}}
+                    <FilterTraining 
+                        onChangeMuscle={(e)=>{setNewMuscleGroup(e.target.value)}}
+                        onChangeTypology={(e)=>{setNewTypology(e.target.value)}}
+                        handleFilter={handleFilter}
                     />
                 </Modal>}
-        </main>
+        </section >
     )
 }
 

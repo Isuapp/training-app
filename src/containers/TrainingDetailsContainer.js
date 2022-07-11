@@ -1,3 +1,5 @@
+import './trainingDetailsContainer.css';
+
 import { useParams } from "react-router-dom";
 import useTraining from "../hooks/useTraining";
 
@@ -14,11 +16,11 @@ const TrainingDetails = ()=>{
 
 
     return(
-        <main>
+        <section>
            <Training 
                 training={training} 
            />
-        </main>
+        </section>
     )
 }
 

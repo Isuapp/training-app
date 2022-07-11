@@ -1,18 +1,46 @@
 
 div.icon-button{
     cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    gap:.5rem;
+    align-items: center;
+    justify-content: center;
+}
+div.icon-button> figure{
     width:3.2rem;
     height:3.2rem;
-    border-radius: 50%;
+    border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--darkColor);
 }
-div.icon-button> img{
-width: 1.8rem;
-height: 1.8rem;
+div.icon-button> figure>img{
+    width: 1.8rem;
+    height: 1.8rem;
 }
 ul>li> article.training-user>div>div.icon-button{
     background-color: transparent;
+}
+header.main-header>nav> div.icon-button> p{
+    color: var(--darkestColor);
+}
+
+
+@media (min-width: 1024px){
+    div.icon-button{
+
+    }
+    header.main-header>nav>div.icon-button{
+        border-radius: 2px;
+    }
+    header.main-header>nav>div.icon-button> figure{
+        background-color: transparent;
+    }
+    header.main-header>nav>div.icon-button{
+        flex-direction: row;
+        padding:0 1rem;
+    }
 }

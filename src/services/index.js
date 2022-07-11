@@ -1,30 +1,30 @@
 import { url } from "../utils/variables"
 
-export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
+
+export const getAllTrainingsService = async ( typology ,muscleGroup ,tokenUser)=>{
 
   const res = await fetch(`${url}trainings?typology=${typology}&muscleGroup=${muscleGroup}`,{
         headers:{
-          Authorization: auth,
+          Authorization: tokenUser,
         }
       });
 
     const body = await res.json();
-    
+
     if(!res.ok) throw new Error(body.message);
 
     return body.data.trainings;
 }
 
 export const getSingleTrainingsService = async (idTraining,tokenUser)=>{
-  
-  
+
+
   const res = await fetch(`${url}trainings/${idTraining}`,{
         headers:{
           Authorization: tokenUser,
         }
       });
 
-   
     const body = await res.json();
 
     if(!res.ok) throw new Error(body.message);
@@ -47,7 +47,7 @@ export const registerService = async (formData)=>{
 }
 
 export const loginService = async ({email, password})=>{
-  
+
   const res = await fetch(`${url}login`,{
     method:'POST',
     headers:{
@@ -82,7 +82,7 @@ console.log(like, auth);
   console.log(body);
 
   if(!res.ok) throw new Error(body.message);
-  
+
   return body.data
 }
 
@@ -130,12 +130,11 @@ export const editTrainingService = async ({id, tokenUser, data})=>{
   });
 
   const body = await  res.json();
-  console.log(body);
   if(!res.ok) throw new Error(body.message);
 
   return body.data
 }
-/* 
+/*
 export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
 
   const res = await fetch(`${url}trainings?typology=${typology}&muscleGroup=${muscleGroup}`,{
@@ -145,7 +144,7 @@ export const getAllTrainingsService = async ( typology ,muscleGroup ,auth)=>{
       });
 
     const body = await res.json();
-    
+
     if(!res.ok) throw new Error(body.message);
 
     return body.data.trainings;

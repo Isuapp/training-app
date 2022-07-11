@@ -1,6 +1,6 @@
 
 import Input from '../input/Input';
-import FileInput from '../fileInput/FileInput.js'; 
+import FileInput from '../fileInput/FileInput.js';
 import { useEffect, useState } from 'react';
 import { typologies, muscles } from '../../utils/variables';
 import { editTrainingService } from '../../services';
@@ -15,11 +15,12 @@ import { useUser } from '../../context/UserContext';
 const EditTrainig = ()=>{
     const {id} = useParams()
 
+    console.log(id)
     const navigate = useNavigate()
 
     const {training} = useTraining(id);
     const [user, setUser] = useUser();
-    
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [typology, setTypology] = useState('');
@@ -44,7 +45,7 @@ const EditTrainig = ()=>{
             data.append('typology', typology);
             data.append('muscleGroup', muscleGroup);
             data.append('image', images);
-            
+
             await editTrainingService({id, tokenUser, data})
             navigate('/trainings');
             setSuccess(true);
@@ -56,7 +57,7 @@ const EditTrainig = ()=>{
         }
     }
 
-    
+
     return(
         <section className='form-wraper'>
         <h2>Edit Training</h2>
@@ -93,19 +94,19 @@ const EditTrainig = ()=>{
             <FileInput
                 onChange={(e)=>{ setImages(e.target.files[0])}}
             >
-                {images ? 
+                {images ?
                 <figure>
                     <p>New image</p>
                     <img src={URL.createObjectURL(images)} alt='image-preview'/>
                 </figure>
-                : 
+                :
                 <figure>
                     <p>CURRENT IMAGE</p>
                     <img src={`${url}${training.image}`} alt='current-image'/>
                 </figure>
                 }
             </FileInput>
-            <Button 
+            <Button
                 disabled={loading}
                 name={loading? 'loading..': 'update training'}
             />

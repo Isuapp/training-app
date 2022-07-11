@@ -15,8 +15,8 @@ const Trainings = ()=>{
         setTypology,
         trainings,
         setTrainings,
-        loading, 
-        error} 
+        loading,
+        error}
         = useTrainings();
     
     const [newTypology, setNewTypology ] = useState('');
@@ -40,11 +40,11 @@ const Trainings = ()=>{
     const handleLikes =async (idTraining)=>{
         try {
             const tokenUser = user.token;
-          
+
             const data = await likesService(idTraining, tokenUser)
 
             console.log(data)
-          
+
         } catch (error) {
           console.error(error)
         }
@@ -62,14 +62,14 @@ const Trainings = ()=>{
 
     if(loading) return <p>Loading...</p>
     if(error) return <p>{error}</p>
-    
+
 
     return(
         <section className="trainings">
             <ul>
                 {trainings.map((training)=>(
                 <li key={training.id} data-id={training.id}>
-                    <TrainingMiniCard 
+                    <TrainingMiniCard
                         training={training}
                         handleTrash={()=>{hanldeDeleteTraining(training.id)}}
                         handleLikes={()=>{handleLikes(training.id)}}

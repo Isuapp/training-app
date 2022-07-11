@@ -5,22 +5,26 @@ import { useUser } from '../context/UserContext';
 import { deleteTrainingServices, likesService } from '../services';
 import FilterTraining from "../components/filterTraining/FilterTraining";
 import TrainingMiniCard from "../components/trainingsMiniCard/TraininingMiniCard";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Trainings = ()=>{
     
-    const [user] = useUser();
-
+    const navigate = useNavigate()
     const {
         setMuscleGroup,
         setTypology,
+        trainings,
         setTrainings,
-        trainings, 
         loading, 
         error} 
         = useTrainings();
 
+    const [user] = useUser();
+
+
     const hanldeDeleteTraining = async (idTraining)=>{
-  
+        
         const tokenUser = user.token
 
       try {
@@ -30,7 +34,6 @@ const Trainings = ()=>{
       }
 
     }
-    
     const handleLikes =async (idTraining)=>{
         try {
 

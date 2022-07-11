@@ -21,7 +21,6 @@ const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
 
   
 
-      useEffect(()=>{},[handleLikes])
 
     if(role==='user') return(
         <article className='training-user'>

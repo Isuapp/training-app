@@ -16,7 +16,7 @@ const useTrainings =()=>{
     
     
     useEffect(()=>{
-        const getAllTrainings = async  ()=>{
+        const getAllTrainings = async  (trainings)=>{
             try{
                 setLoading(true);
                 const data = await getAllTrainingsService(typology, muscleGroup, user.token);
@@ -30,9 +30,9 @@ const useTrainings =()=>{
         };
 
         getAllTrainings();
-    }, [typology, muscleGroup, setTypology, setMuscleGroup ])
+    }, [typology, muscleGroup, setTypology, setMuscleGroup, setTrainings ])
 
-    return {typology, muscleGroup, setTypology ,setMuscleGroup , trainings,setTrainings, loading,error}
+    return {typology, muscleGroup, setTypology ,setMuscleGroup , trainings, setTrainings, loading,error}
 }
 
 export default useTrainings;

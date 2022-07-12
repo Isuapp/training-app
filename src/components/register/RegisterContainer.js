@@ -88,7 +88,7 @@ const RegisterContainer = ({move})=>{
                     label='email'
                 />
                 <Input
-                    type='text'
+                    type='password'
                     value={password}
                     name='password'
                     onChange={(e)=> {setPassword(e.target.value)
@@ -98,7 +98,7 @@ const RegisterContainer = ({move})=>{
                     label='password'
                 />
                 <Input
-                    type='text'
+                    type='password'
                     value={repeatPassword}
                     name='repeatPassword'
                     onChange={(e)=> {setRepeatPassword(e.target.value)

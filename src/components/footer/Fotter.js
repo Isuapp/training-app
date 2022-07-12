@@ -1,7 +1,6 @@
 import './footer.css';
 
 import { useUser} from "../../context/UserContext"
-import { useModal } from '../../context/modalContext';
 import {useNavigate } from 'react-router-dom';
 
 import githubLogoIcon from '../../assets/utils/github-logo.svg'

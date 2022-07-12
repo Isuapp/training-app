@@ -3,7 +3,7 @@ import './textarea.css';
 const TextArea =({active,label,name,type,value,onChange,placeholder,error})=>{
 
     return(
-        <div className='float-input'>
+        <div className='float-textarea'>
             <textarea 
                 name={name}
                 type={type}

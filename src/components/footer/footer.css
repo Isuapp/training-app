@@ -1,0 +1,35 @@
+@media (min-width: 1024px){
+    
+    footer{
+    background-color: var(--white);  
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between ;
+    padding:1rem 3rem;
+    }
+
+    footer> nav{
+        display: flex;
+        align-items: center;
+        gap:2rem;
+    }
+
+    footer> div{
+
+        display: flex;
+        align-items: center;
+        gap:.5rem;
+    }
+
+    footer> nav> .nav-link{
+        text-align: center;
+    }
+
+    footer> nav> div.icon-button> figure,
+    footer> nav> .nav-link> figure{
+        display: none;
+    }
+}

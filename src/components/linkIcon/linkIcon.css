@@ -1,0 +1,21 @@
+a{
+    cursor: pointer;
+    display: flex;
+    gap:.5rem;
+    text-decoration: none;
+    color: var(--mainDarkColor);
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+a> p{
+    color: var(--darkestColor);
+    text-decoration: none;
+}
+
+a> figure> img{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+

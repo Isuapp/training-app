@@ -1,6 +1,6 @@
 section{
     padding:0;
-    background-color: var(--white);
+    background-color: var(--mainColor);
 }
 @media (min-width:1024px){
     section{

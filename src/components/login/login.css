@@ -6,15 +6,19 @@ article.login-wraper{
     align-items: center;
     justify-content: center;
 }
+
 article.login-wraper> h2{
     transform: translateY(1.5rem);
+    color:var(--successColor)
 }
+
 article.login-wraper> form{
     background-color: var(--white);
     width: 20rem;
     border-radius: 2px;
     padding:3rem;
 }
+
 article.login-wraper> form>div:last-child{
     display: flex;
     flex-direction: column;

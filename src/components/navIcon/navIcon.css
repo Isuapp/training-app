@@ -1,45 +1,47 @@
-.navLink{
+.nav-link{
     cursor: pointer;
-    border-radius: 50%;
     display: flex;
     flex-direction: column;
     gap:.5rem;
+    text-decoration: none;
+    color: var(--mainDarkColor);
     align-items: center;
     justify-content: center;
+    width:100%;
 }
-.navLink> p{
+
+.nav-link> p{
     color: var(--darkestColor);
     text-decoration: none;
 }
-.navLink> figure
-{
-    cursor: pointer;
-    width:3.2rem;
-    height:3.2rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--darkColor);
-}
-.navLink> figure> img{
+
+.nav-link> figure> img{
     width: 1.8rem;
     height: 1.8rem;
 }
 
+
+/* 
+------------------------------------------------
+DESKTOP STYLES NAVICON ON HEADER
+------------------------------------------------
+*/
 @media (min-width: 1024px){
-    header.main-header>nav>.navLink{
+    header.main-header>nav>.nav-link{
         border-radius: 2px;
+        width: auto;
     }
-    header.main-header>nav>.navLink> figure{
+    
+    header.main-header>nav>.nav-link> figure{
         background-color: transparent;
     }
-    header.main-header>nav>.navLink{
+
+    header.main-header>nav>.nav-link{
         flex-direction: row;
         padding:0 1rem;
     }
 
-    header.main-header>nav>.navLink{
+    header.main-header>nav>.nav-link{
         width: auto;
         align-items: center;
         justify-content: flex-end;

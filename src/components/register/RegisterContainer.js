@@ -6,7 +6,7 @@ import { useUser } from "../../context/UserContext";
 import { useAdmin } from '../../context/adminContext';
 
 // Importamos el componente Navigate para redireccionarnos dónde queramos
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Importamos el componente personalizado que hemos creado.
 import Input from "../input/Input";
@@ -123,7 +123,7 @@ const RegisterContainer = ({move})=>{
                         disabled={loading}
                     />
                     
-                    <span className='text-link' onClick={move}>Already registered? Login!</span>
+                    <Link className='text-link' to='/login'>Already registered? Login!</Link>
                 </div>
                
             </form>

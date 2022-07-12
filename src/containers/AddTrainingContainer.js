@@ -1,4 +1,6 @@
 
+import './addTrainingContainer.css'
+
 import AddTraining from '../components/addTraining/AddTraining';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,9 +13,9 @@ const AddTrainigContainer = ()=>{
       }
 
     return(
-        <>
+        <section>
             <AddTraining/>
-        </>
+        </section>
     )
 }
 

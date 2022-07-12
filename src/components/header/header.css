@@ -6,18 +6,26 @@ header.main-header{
     margin-top:2rem;
     bottom: 0;
 }
-header.main-header> nav> div.icon-button:nth-child(4),
-header.main-header> nav> div.icon-button:nth-child(5)
+
+header.main-header> nav> div.icon-button:nth-child(3),
+header.main-header> nav> div.icon-button:nth-child(4)
 {
     display: none;
 }
 
 header.main-header> nav{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     gap:2rem;
 }
 
+
+/* 
+----------------------------------------------
+DESKTOP STYLES HEADER
+----------------------------------------------
+*/
 @media (min-width: 1024px){
 
     header.main-header{
@@ -31,8 +39,10 @@ header.main-header> nav{
         gap:.2rem;
     }
 
-    header.main-header> nav> div.icon-button:nth-child(4)  
+    header.main-header> nav> div.icon-button:nth-child(4),
+    header.main-header> nav> div.icon-button:nth-child(3)  
     {
         display: flex;
+        margin-left:auto;
     }
 }

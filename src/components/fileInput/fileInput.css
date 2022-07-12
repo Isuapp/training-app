@@ -19,12 +19,12 @@
     position:absolute;
     font-size: 1.5rem;
     font-weight: bold;
-    color:var(--darkestColor)
+    color:var(--successColor)
 }
 .fileInput-wraper > label{
     cursor:pointer;
-    background-color: var(--darkestColor);
-    color:var(--white);
+    background-color: var(--mainColor);
+    color: var(--brokenWhite);
     padding:.5rem 1rem;
     border-radius: 2px;
     display: flex;

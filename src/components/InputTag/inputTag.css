@@ -2,14 +2,11 @@ div.input-wraper{
 }
 div.input-wraper> label{
     /* background-color: var(--mainColor); */
-    color:var(--darkestColor);
+    color: var(--mainDarkColor);
     border-radius:30%;
     padding:.5rem .5rem;
 }
 div.input-wraper> input{
 }
 
-/* div.input-wraper>input[type='radius']:checked{
-    background-color: red;
-} */
 

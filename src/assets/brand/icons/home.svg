@@ -1,2 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="512" height="512"><g id="_01_align_center" data-name="01 align center"><path d="M13.338.833a2,2,0,0,0-2.676,0L0,10.429v10.4a3.2,3.2,0,0,0,3.2,3.2H20.8a3.2,3.2,0,0,0,3.2-3.2v-10.4ZM15,22.026H9V17a3,3,0,0,1,6,0Zm7-1.2a1.2,1.2,0,0,1-1.2,1.2H17V17A5,5,0,0,0,7,17v5.026H3.2a1.2,1.2,0,0,1-1.2-1.2V11.319l10-9,10,9Z"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#39b4a0ff;}
+	.st1{fill:#203555;}
+</style>
+<path class="st0" d="M302,32.4c-15-13.5-37.7-13.5-52.7,0l-210,189v204.8c0,34.8,28.2,63,63,63c0,0,0,0,0,0H449
+	c34.8,0,63-28.2,63-63c0,0,0,0,0,0V221.3L302,32.4z"/>
+<g id="_01_align_center">
+	<path class="st1" d="M262.7,16.9c-15-13.5-37.7-13.5-52.7,0L0,205.9v204.8c0,34.8,28.2,63,63,63c0,0,0,0,0,0h346.6
+		c34.8,0,63-28.2,63-63c0,0,0,0,0,0V205.9L262.7,16.9z M295.4,434.3H177.2v-99c0-32.6,26.4-59.1,59.1-59.1s59.1,26.4,59.1,59.1
+		V434.3z M433.2,410.6c0,13.1-10.6,23.6-23.6,23.6h0h-74.8v-99c0-54.4-44.1-98.5-98.5-98.5s-98.5,44.1-98.5,98.5v99H63
+		c-13.1,0-23.6-10.6-23.6-23.6l0,0V223.4L236.3,46.2l196.9,177.2V410.6z"/>
+</g>
+</svg>

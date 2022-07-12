@@ -1,6 +1,3 @@
-
-import jwt from 'jwt-decode';
-
 import { addTrainingService } from "../../services";
 import { muscles, typologies } from "../../utils/variables";
 import { useState } from "react";
@@ -10,10 +7,11 @@ import FileInput from '../fileInput/FileInput';
 import { useNavigate } from 'react-router-dom';
 import Button from '../button/Button';
 import { useUser } from '../../context/UserContext';
+
 const AddTraining = ()=>{
 
     let navigate = useNavigate()
-    const [user, setUser] = useUser();
+    const [user] = useUser();
 
     const [name, setName ] = useState('');
     const [typology, setTypology] = useState('');
@@ -25,6 +23,8 @@ const AddTraining = ()=>{
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    const [active, setActive] = useState(false);
 
     const handleAddTraining = async(e)=>{
         e.preventDefault();
@@ -42,7 +42,7 @@ const AddTraining = ()=>{
             data.append('typology', typology);
             data.append('muscleGroup', muscleGroup);
             data.append('image', images);
-            const training = await  addTrainingService({data, tokenUser});
+            await  addTrainingService({data, tokenUser});
             navigate('/trainings')
 
             setSuccess(true)
@@ -61,14 +61,20 @@ const AddTraining = ()=>{
                 type='text'
                 name='name'
                 value={name}
-                onChange={(e)=>setName(e.target.value)}
+                onChange={(e)=>{setName(e.target.value);
+                                    if (e.target.value !== '') setActive(true)
+                                    else setActive(false)}}
+                active={active}
             />
             <Input
                 label='description'
                 type='text'
                 name='description'
                 value={description}
-                onChange={(e)=>setDescription(e.target.value)}
+                onChange={(e)=>{setDescription(e.target.value);
+                                    if (e.target.value !== '') setActive(true)
+                                    else setActive(false)}}
+                active={active}
             />
             <select name='typologies' onChange={(e)=>setTypology(e.target.value)}>
                 {

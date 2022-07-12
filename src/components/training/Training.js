@@ -1,7 +1,9 @@
 import './training.css';
 
-import { useState } from "react";
+import iconHeart   from '../../assets/brand/icons/heart.svg'
 import { url } from '../../utils/variables';
+
+import IconButton from '../iconButton/IconButton';
 
 
 const Training = ({training, likes})=>{
@@ -22,7 +24,7 @@ const Training = ({training, likes})=>{
             <p>{training.description}</p>
         </div>
         <div>
-            <p>{training.likes} likes</p>
+            <IconButton name={training.likes} icon={iconHeart}/>
         </div>
     </article>
     )

@@ -1,0 +1,13 @@
+section{
+    padding:3rem 0 0 0;
+    background-color: var(--mainColor);
+}
+@media (min-width:1024px){
+    section{
+        padding:4 rem 0 0 0;
+    }
+    section section.form-wraper{
+        max-width: 40rem;
+        margin: auto;
+    }
+}

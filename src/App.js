@@ -13,6 +13,7 @@ import NotFoundContainer from './containers/NotFoundContainer';
 
 import FilterTraining from './components/filterTraining/FilterTraining';
 import HeaderUp from './components/headerUp/HeaderUp';
+import Footer from './components/footer/Fotter';
 
 function App() {
 
@@ -23,7 +24,6 @@ function App() {
      <main className='main-app'>
       <Routes>
         <Route path='/' element={<LandingContainer />}/>
-        {/* <Route path='/home' element={<Home />}/> */}
         <Route path='/trainings' element={<TrainingsContainer />}/>
         <Route path='/trainings/:id' element={<TrainingDetailsContainer />}/>
         <Route path='/register' element={<RegisterContainer />}/>
@@ -33,7 +33,7 @@ function App() {
         <Route path='/filter' element={<FilterTraining />}/>
         <Route path='*' element={<NotFoundContainer />}/>
       </Routes>
-
+      <Footer/>
      </main>
     </div>
   );

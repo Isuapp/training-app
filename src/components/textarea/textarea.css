@@ -1,32 +1,32 @@
-div.float-input{
+div.float-textarea{
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 15rem;
 }
-div.float-input> textarea{
+div.float-textarea> textarea{
     width: 100%;
     padding: 14px 16px 0 10px;
     outline: 0;
     border: none;
     border-radius: 4px;
-    background: var(--mainColor);
+    background: var(--brokenWhite);
     font-size: 1.2rem;
     margin:1.6rem 0rem;
 }
 
-div.float-input> label{
+div.float-textarea> label{
     padding: 0 12px;
-    color: #999;
+    color: var(--mainDarkColor);
     pointer-events: none;
     font-size: 1.5rem;
     position: absolute;
     transform: translate(0, 2.2rem) scale(1);
 }
-div.float-input:focus-within label {
+div.float-textarea:focus-within label {
     transform: translate(0, -.8rem) scale(0.9);
   }
 
-div.float-input .active-label {
+div.float-textarea .active-label {
     transform: translate(0, -.8rem) scale(0.9);
   }

@@ -13,13 +13,14 @@ import TextArea from '../textarea/TextArea';
 
 
 const EditTrainig = ()=>{
-    const {id} = useParams()
 
-    console.log(id)
+    const {id} = useParams()
+    const [active,setActive] = useState(false);
+    
     const navigate = useNavigate()
 
     const {training} = useTraining(id);
-    const [user, setUser] = useUser();
+    const [user] = useUser();
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -65,7 +66,10 @@ const EditTrainig = ()=>{
                 type='text'
                 name='name'
                 value={name}
-                onChange={(e)=>setName(e.target.value)}
+                onChange={(e)=>{setName(e.target.value);
+                                    if (e.target.value !== '') setActive(true)
+                                    else setActive(false)}}
+                active={active}
             />
             <TextArea
                 label=''
@@ -73,7 +77,10 @@ const EditTrainig = ()=>{
                 name='description'
                 value={description}
                 placeholder={training.description}
-                onChange={(e)=>setDescription(e.target.value)}
+                onChange={(e)=>{setDescription(e.target.value);
+                                    if (e.target.value !== '') setActive(true)
+                                    else setActive(false)}}
+                active={active}
             />
             <select name='typologies' onChange={(e)=>setTypology(e.target.value)}>
                 {

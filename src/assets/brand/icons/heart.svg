@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    id="Filled" 
-    viewBox="0 0 24 24" 
-    width="512" 
-    height="512"
-    fill='#c6c6c6'
-><path 
-    d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"
-/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Filled" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#b89e9e;}
+</style>
+<path class="st0" d="M373.3,40.9c-48.9,0.8-93.7,27.6-117.3,70.4c-23.7-42.8-68.4-69.6-117.3-70.4C58.9,44.4-3,111.6,0,191.3
+	c0,97,102.1,202.9,187.7,274.8c39.5,33.2,97.1,33.2,136.5,0C409.9,394.2,512,288.3,512,191.3C515,111.6,453.1,44.4,373.3,40.9z"/>
+</svg>

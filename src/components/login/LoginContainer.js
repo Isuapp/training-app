@@ -8,7 +8,7 @@ import { useUser } from "../../context/UserContext";
 import Input from "../input/Input";
 
 // Importamos el componente Navigate que nos redireccionará dónde le indiquemos
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginService } from '../../services';
 
 import Button from '../button/Button';
@@ -79,7 +79,7 @@ const LoginContainer = ({move})=>{
                         name={loading ? 'loading..': 'login'}
                         disabled={loading}
                     />
-                    <span className='text-link' onClick={move}>not registered? Register!</span>
+                    <Link className='text-link' to='/register'>not registered? Register!</Link>
 
                 </div>
             </form>

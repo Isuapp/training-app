@@ -4,40 +4,58 @@
   box-sizing: border-box;
   font-size: 16px;
 }
+
 body{
 
   background-color: var(--mainColor);
 }
+
 :root{
-  --sucess:green;
-  --error:red;
-  --mainColor: #D9D9D9;
-  --darkColor: #B6B6B6;
-  --darkestColor:#5A5A5A;
-  --white: #f7f7f7;
+  --mainColor: #3562acff;
+  --mainDarkColor: #213655ff;
+  --mainLightColor:#678bc0ff;
+  --white: #f3e7e8ff;
+  --brokenWhite:#efdadaff;
+  --black:#1a1e24ff;
+  --alertColor:#e84037ff;
+  --alertDarkColor:#843331ff;
+  --alertLightColor:#ea8886ff;
+  --successColor:#39b4a0ff;
+  --successDarkColor:#2a6055ff;
+  --successLightColor:#86cabeff;
 }
+
 .success{
   font-weight: bold;
-  color: var(--sucess);
+  color: var(--sucessColor);
 
 }
+
 .error{
   font-weight: bold;
-  color: var(--error);
+  color: var(--alertColor);
 }
+
 h2{
   font-size: 2.5rem;
+  color:var(--successColor)
 }
+
 li{
     list-style: none;
 }
-p.text-link{
+
+.text-link{
   padding:.2rem;
   cursor: pointer;
+  color:var(--successColor);
+  text-decoration: none;
 }
+
 main.main-app{
   padding:0 0 8rem 0;
-  background-color: var(--mainColorx);
+  height: 100vh;
+  background-color: var(--mainColor);
 }
 
 section.form-wraper{
@@ -60,8 +78,10 @@ select{
   text-transform: uppercase;
   font-weight: bold;
   background-color: var(--mainColor);
+  color: var(--brokenWhite);
   border-radius: 2px;
   min-width: 15rem;
   width:100%;
   margin:1rem 0rem;
+  cursor:pointer;
 }

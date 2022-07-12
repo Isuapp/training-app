@@ -1,44 +1,50 @@
-
 div.icon-button{
     cursor: pointer;
-    border-radius: 50%;
     display: flex;
     flex-direction: column;
     gap:.5rem;
     align-items: center;
     justify-content: center;
+    width:100%;
 }
-div.icon-button> figure{
-    width:3.2rem;
-    height:3.2rem;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--darkColor);
-}
+
 div.icon-button> figure>img{
     width: 1.8rem;
     height: 1.8rem;
 }
-ul>li> article.training-user>div>div.icon-button{
-    background-color: transparent;
-}
+
 header.main-header>nav> div.icon-button> p{
-    color: var(--darkestColor);
+    color: var(--mainDarkColor);
 }
 
 
-@media (min-width: 1024px){
-    div.icon-button{
 
-    }
+/* 
+------------------------------------------------
+MOBILE STYLES ICONBUTTON ON HEADER
+------------------------------------------------
+*/
+header.header-up>nav>div.icon-button{
+    width: auto;
+}
+
+
+
+/* 
+------------------------------------------------
+DESKTOP STYLES ICONBUTTON ON HEADER
+------------------------------------------------
+*/
+@media (min-width: 1024px){
     header.main-header>nav>div.icon-button{
         border-radius: 2px;
+        width: auto;
     }
+
     header.main-header>nav>div.icon-button> figure{
         background-color: transparent;
     }
+    
     header.main-header>nav>div.icon-button{
         flex-direction: row;
         padding:0 1rem;

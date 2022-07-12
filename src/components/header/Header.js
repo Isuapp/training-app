@@ -29,7 +29,7 @@ const Header = () => {
       navigate('/login')
     }
   }
-  
+  console.log('user', user)
   const search=()=>{
     console.log('Search');
   }
@@ -42,10 +42,9 @@ const Header = () => {
     <header className='main-header'>
       <nav>
         {user&& <NavIcon name='HOME' to='/trainings' icon={logoIcon}/> }
-        {user&& <IconButton name='SEARCH' onClick={search} icon={searchIcon}/> }
-        {user&&user.roleUser==='user'&& <IconButton name='FILTER TRAININGS' onClick={()=>{setModal(<FilterTraining />)}} icon={filtersIcon}/>}
+        {user&&user&& <IconButton name='FILTER TRAININGS' onClick={()=>{setModal(<FilterTraining />)}} icon={filtersIcon}/>}
         {user&&user.roleUser==='admin'&& <NavIcon name='ADD TRAININGS'to='/add-training' icon={addIcon}/> }
-        {user&&<IconButton  onClick={logout} icon={userIcon} />}
+        {user&&<IconButton name={`Hello ${user.name}!`} onClick={logout} icon={userIcon} />}
       </nav>
     </header>
   )

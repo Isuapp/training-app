@@ -1,41 +1,43 @@
-
 article.training-detail{
-    margin:auto;
     background-color: var(--mainColor);
-
 }
+
 article.training-detail>div{
     width: 25rem;
+    max-width: 90%;
     margin: auto;
     padding:  0rem 1rem 1rem 1rem;
     background-color: var(--white);
 }
+
 article.training-detail> figure{
     margin:0 0 2rem 0;
 }
+
 article.training-detail> figure>img{
     width: 100%;
 }
+
 article.training-detail>div>h4:first-child{
     text-align: center;
     font-size: 3rem;
     transform: translateY(-2.5rem);
-}
-article.training-detail>div>h4{
     text-transform: uppercase;
-}   
+}
+
+article.training-detail>div> h4:nth-child(1),   
 article.training-detail>div> h4:nth-child(3),
 article.training-detail>div> h4:nth-child(5),
 article.training-detail>div> p
 {
-    color:var(--darkColor);
+    color:var(--successColor);
 }
-article.training-detail>div> h4:nth-child(1),
+
 article.training-detail> div> h4:nth-child(2),
 article.training-detail> div> h4:nth-child(4),
 article.training-detail> div> h4:nth-child(6)
 {
-    color:var(--darkestColor);
+    color:var(--mainDarkColor);
     text-transform: uppercase;
 }
 
@@ -51,7 +53,21 @@ article.training-detail> div> h4:nth-child(6)
 {
     margin:0 0  .5rem 0;
 }
+article.training-detail> div:last-child{
+    display: flex;
+    justify-content: flex-end;
+}
 
+article.training-detail> div:last-child> div.icon-button{
+    flex-direction: row-reverse;
+    cursor:auto;
+}
+
+/* 
+-----------------------------------------------
+DESKTOP STYLES
+-----------------------------------------------
+*/
 @media (min-width:1024px){
 
     article.training-detail>figure{

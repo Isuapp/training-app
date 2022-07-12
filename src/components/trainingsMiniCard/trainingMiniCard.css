@@ -14,8 +14,8 @@ ul{
 ul> li>article.training-admin:hover,
 ul> li>article.training-user:hover
 {
-    -webkit-box-shadow: 0px 0px 10px 0px #0000005d; 
-    box-shadow: 0px 0px 10px 0px #0000005d;
+    -webkit-box-shadow: 0px 0px 10px 0px var(--mainDarkColor); 
+    box-shadow: 0px 0px 10px 0px var(--mainDarkColor);
     transform: scale(1.005);
 }
 
@@ -49,16 +49,19 @@ ul> li>article.training-admin{
     width:20rem;
     padding:.8rem;
 }
+
 ul> li>article.training-admin> .link,
 ul> li>article.training-admin> div
 {
     text-decoration: none;
-    color:var(--darkestColor);
+    color:var(--mainDarkColor);
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     text-transform: uppercase;
     gap:1rem;
 }
+
 ul> li>article.training-admin> .link> figure{
     width:3rem;
     height: 3rem;
@@ -84,29 +87,38 @@ ul>li>article.training-user{
     background-color: var(--white);
     width:20rem;
 }
-ul>li> article.training.user> .link> figure>{
+
+ul>li> article.training-user> .link> figure> img{
     width: 20rem;
+    height: 12rem;
+    min-height: 12rem;
 }   
+
 ul>li> article.training-user> .link{
     flex-basis:100%;
 }
+
 ul>li> article.training-user> div> h4:nth-child(1),
 ul>li> article.training-user> div> h4:nth-child(3){
-    color:var(--darkColor)
+    color:var(--mainDarkColor)
 }
+
 ul>li> article.training-user> div> h4:nth-child(2){
     margin:0 0 1rem 0;
 }
+
 ul>li> article.training-user> div> h4:nth-child(2),
 ul>li> article.training-user> div> h4:nth-child(4)
 {
-    color:var(--darkestColor);
+    color:var(--successColor);
     text-transform: uppercase;
 }
+
 ul>li> article.training-user> div:nth-child(2){
     flex-basis:70%;
     padding:1rem;
 }
+
 
 
 /* 
@@ -114,12 +126,17 @@ ul>li> article.training-user> div:nth-child(2){
 LIKES BUTTON SPECIAL STYLES
 -------------------------------------
 */
+ul> li>article.training-user> div:last-child{
+padding:0 1rem 1rem 0 ;
+}
+
 ul> li>article.training-user> div> div.icon-button{
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
 }
-ul> li>article.training-user> div:last-child> div.icon-button> figure{
+
+ul> li>article.training-user> div> div.icon-button> figure{
     background-color: transparent;
 }
 
@@ -140,6 +157,7 @@ DESKTOP STYLES
         justify-content: center;
         gap:3rem;
     }
+
     ul>li{
         gap:2rem;
     }

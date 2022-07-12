@@ -10,7 +10,6 @@ import IconButton from '../iconButton/IconButton'
 import NavIcon from '../navIcon/NavIcon';
 import { Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import { useEffect } from 'react';
 
 
 const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
@@ -18,9 +17,6 @@ const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
     const [user] = useUser();
     const role = user.roleUser;
     
-
-  
-
 
     if(role==='user') return(
         <article className='training-user'>
@@ -36,8 +32,7 @@ const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
                 <h4>{training.muscleGroup}</h4>
             </div>
             <div>
-                <p>{training.likes}</p>
-                <IconButton icon={heart} onClick={handleLikes} />   
+                <IconButton icon={heart} onClick={handleLikes} name={training.likes}/>   
             </div>
         </article>
     )
@@ -48,7 +43,7 @@ const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
                 <figure> 
                     <img src={training.image? `${url}${training.image}`: '../../assets/utils/broken-image.png'} alt={`image of training ${training.name}`} />
                 </figure>
-            <h4>{training.name}</h4>
+                <h4>{training.name}</h4>
             </Link>
             <div>
                 <IconButton icon={trash} onClick={handleTrash} />

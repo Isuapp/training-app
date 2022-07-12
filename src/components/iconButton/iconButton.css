@@ -26,8 +26,8 @@ MOBILE STYLES ICONBUTTON ON HEADER
 */
 header.header-up>nav>div.icon-button{
     width: auto;
+    flex-direction: row;
 }
-
 
 
 /* 
@@ -49,4 +49,16 @@ DESKTOP STYLES ICONBUTTON ON HEADER
         flex-direction: row;
         padding:0 1rem;
     }
+}
+/* 
+----------------------------------------------------------
+SPECIALS FOR SMALL SCREENS
+----------------------------------------------------------
+*/
+
+@media (max-width: 430px){
+    header.main-header> nav> .icon-button> p{
+        display: none;
+    }    
+
 }

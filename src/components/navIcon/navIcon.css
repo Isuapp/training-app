@@ -48,3 +48,16 @@ DESKTOP STYLES NAVICON ON HEADER
     }
 
 }
+
+/* 
+----------------------------------------------------------
+SPECIALS FOR SMALL SCREENS
+----------------------------------------------------------
+*/
+
+@media (max-width: 430px){
+    header.main-header>nav>.nav-link> p{
+        display: none;
+    }    
+
+}

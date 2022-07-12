@@ -4,9 +4,7 @@ import { useUser} from "../../context/UserContext"
 import { useModal } from '../../context/modalContext';
 import {useNavigate } from 'react-router-dom';
 
-
 import userIcon from '../../assets/brand/icons/user.svg';
-import searchIcon from '../../assets/brand/icons/search.svg'
 import filtersIcon from '../../assets/brand/icons/filters.svg';
 import addIcon from '../../assets/brand/icons/gym.svg';
 
@@ -29,7 +27,7 @@ const Header = () => {
       navigate('/login')
     }
   }
-  console.log('user', user)
+  
   const search=()=>{
     console.log('Search');
   }

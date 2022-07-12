@@ -1,3 +1,8 @@
+/* 
+--------------------------------------
+GENERAL STYLES
+--------------------------------------
+*/
 ul{
     display: flex;
     flex-direction: column;
@@ -5,6 +10,36 @@ ul{
     align-items: center;
     padding:1rem 0;
 }
+
+ul> li>article.training-admin:hover,
+ul> li>article.training-user:hover
+{
+    -webkit-box-shadow: 0px 0px 10px 0px #0000005d; 
+    box-shadow: 0px 0px 10px 0px #0000005d;
+    transform: scale(1.005);
+}
+
+ul> article.training-admin> .link> h4,
+ul> article.training-user> .link> h4
+{
+    text-transform: uppercase;
+}
+
+ul>li> article.training-admin> .link> figure> img,
+ul>li> article.training-user> .link> figure> img
+{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 
+------------------------------------------
+ADMIN STYLES
+------------------------------------------
+*/
 ul> li>article.training-admin{
     display: flex;
     justify-content: space-between;
@@ -13,18 +48,6 @@ ul> li>article.training-admin{
     background-color: var(--white);
     width:20rem;
     padding:.8rem;
-}
-ul> li>article.training-admin:hover,
-ul> li>article.training-user:hover
-{
-    -webkit-box-shadow: 0px 0px 10px 0px #0000005d; 
-    box-shadow: 0px 0px 10px 0px #0000005d;
-    transform: scale(1.005);
-}
-ul> article.training-admin> .link> h4,
-ul> article.training-user> .link> h4
-{
-    text-transform: uppercase;
 }
 ul> li>article.training-admin> .link,
 ul> li>article.training-admin> div
@@ -39,30 +62,24 @@ ul> li>article.training-admin> div
 ul> li>article.training-admin> .link> figure{
     width:3rem;
     height: 3rem;
+    min-width:3rem;
+    min-height: 3rem;
     border-radius: 50%;
     overflow: hidden;
 }
-ul>li> article.training-admin> .link> figure> img,
-ul>li> article.training-user> .link> figure> img
-{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-li{
-    list-style: none;
-}
+
+
 
 /* 
 -------------------------------
 USER STYLES
 -------------------------------
 */
-
 ul>li>article.training-user{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
+    justify-content: space-between  ;
     border-radius: 2px;
     background-color: var(--white);
     width:20rem;
@@ -73,7 +90,6 @@ ul>li> article.training.user> .link> figure>{
 ul>li> article.training-user> .link{
     flex-basis:100%;
 }
-
 ul>li> article.training-user> div> h4:nth-child(1),
 ul>li> article.training-user> div> h4:nth-child(3){
     color:var(--darkColor)
@@ -88,10 +104,32 @@ ul>li> article.training-user> div> h4:nth-child(4)
     text-transform: uppercase;
 }
 ul>li> article.training-user> div:nth-child(2){
-    flex-basis:80%;
+    flex-basis:70%;
     padding:1rem;
 }
 
+
+/* 
+-------------------------------------
+LIKES BUTTON SPECIAL STYLES
+-------------------------------------
+*/
+ul> li>article.training-user> div> div.icon-button{
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+}
+ul> li>article.training-user> div:last-child> div.icon-button> figure{
+    background-color: transparent;
+}
+
+
+
+/* 
+---------------------------------------
+DESKTOP STYLES
+---------------------------------------
+*/
 @media (min-width: 1024px){
 
     ul{

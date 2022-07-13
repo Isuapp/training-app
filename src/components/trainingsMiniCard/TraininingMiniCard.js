@@ -18,7 +18,7 @@ const TrainingMiniCard = ({ training, handleTrash, handleLikes })=>{
     const role = user.roleUser;
     
 
-    if(role==='user') return(
+    if(role==='normal') return(
         <article className='training-user'>
             <Link to={`/trainings/${training.id}`} className='link'>  
                 <figure> 

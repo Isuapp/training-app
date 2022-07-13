@@ -24,7 +24,7 @@ const RegisterContainer = ({move})=>{
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
-    const [role, setRole ] = useState('')
+    const [role, setRole ] = useState('normal')
     // Llamamos a las variables que usaremos para recibir feedback del backend.
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -106,16 +106,6 @@ const RegisterContainer = ({move})=>{
                         else setActive(false)}}
                         active={active}
                     label='repeatPassword'
-                />
-                <Input
-                    type='role'
-                    value={role}
-                    name='role'
-                    onChange={(e)=> {setRole(e.target.value)
-                        if (e.target.value !== '') setActive(true)
-                        else setActive(false)}}
-                        active={active}
-                    label='role'
                 />
                 <div>
                     <Button 

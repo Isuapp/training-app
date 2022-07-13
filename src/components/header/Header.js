@@ -42,7 +42,7 @@ const Header = () => {
         {user&& <NavIcon name='HOME' to='/trainings' icon={logoIcon}/> }
         {user&&user&& <IconButton name='FILTER TRAININGS' onClick={()=>{setModal(<FilterTraining />)}} icon={filtersIcon}/>}
         {user&&user.roleUser==='admin'&& <NavIcon name='ADD TRAININGS'to='/add-training' icon={addIcon}/> }
-        {user&&<IconButton name={`Hello ${user.name}!`} onClick={logout} icon={userIcon} />}
+        {user&&<IconButton name={`Close sesion of ${user.name}!`} onClick={logout} icon={userIcon} />}
       </nav>
     </header>
   )

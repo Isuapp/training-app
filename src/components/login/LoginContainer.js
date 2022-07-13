@@ -76,10 +76,10 @@ const LoginContainer = ({move})=>{
                     />
                 <div>
                     <Button
-                        name={loading ? 'loading..': 'login'}
+                        name={loading ? 'loading...': 'login'}
                         disabled={loading}
                     />
-                    <Link className='text-link' to='/register'>not registered? Register!</Link>
+                    <Link className='text-link' to='/register'>Not registered? Register!</Link>
 
                 </div>
             </form>

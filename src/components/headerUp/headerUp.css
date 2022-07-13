@@ -2,6 +2,7 @@ header.header-up{
     position: fixed;
     width: 100%;
     padding:1rem 2rem;
+    background-color: rgba(245, 245, 245, .5);
 }
 
 header.header-up>nav{

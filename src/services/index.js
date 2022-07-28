@@ -77,11 +77,10 @@ export const likesService = async (like, tokenUser)=>{
   });
 
   const body = await res.json();
-  console.log(body);
 
   if(!res.ok) throw new Error(body.message);
 
-  return body.data
+  return body.message
 }
 
 export const deleteTrainingServices = async (idTraining,tokenUser)=>{

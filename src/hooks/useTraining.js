@@ -18,23 +18,23 @@ const useTraining = (idTraining)=>{
         const loadTraining = async ()=>{
             try{
                 setLoading(true);
-                
+
                 const data = await getSingleTrainingsService(idTraining, tokenUser);
 
                 setTraining(data);
-        
+
             }catch (error){
                 setError(error.message)
             }finally{
                 setLoading(false)
             }
-        } 
+        }
 
         loadTraining()
 
     }, [idTraining])
 
-    return {  training, error, loading}
+    return {  training, error, loading, setTraining}
 };
 
 export default useTraining;

@@ -18,18 +18,17 @@ const HeaderUp = ()=>{
           navigate('/login')
         }
       }
-    
+
       const back =()=>{
         navigate(-1);
       }
 
     return(
-        <header className='header-up'>
-          <nav>
+          <nav className='header-up'>
             {user&&<IconButton  onClick={back} icon={arrowIcon} className='icon-header-up'/>}
             {user&&<IconButton onClick={logout} name={`Close sesion of ${user.name}!`}icon={userIcon} className='icon-header-up'/>}
           </nav>
-        </header>
+
     )
 }
 

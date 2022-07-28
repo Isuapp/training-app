@@ -1,18 +1,18 @@
-header.header-up{
+.header-up{
     position: fixed;
     width: 100%;
     padding:1rem 2rem;
     background-color: rgba(245, 245, 245, .5);
 }
 
-header.header-up>nav{
+.header-up{
     display: flex;
     justify-content: space-between;
 }
 
 @media (min-width: 1024px){
 
-    header.header-up{
-       display: none;
+    .header-up{
+        display: none;
     }
 }
